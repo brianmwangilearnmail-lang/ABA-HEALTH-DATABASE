@@ -26,14 +26,14 @@ function MainApp() {
       const hash = window.location.hash.replace('#', '');
       const rawPath = window.location.pathname.replace(/^\//, '');
 
-      // Path takes priority over hash (so /admin-login works as a real URL)
       const validPages = ['home', 'about', 'contact', 'science', 'privacy', 'admin-login', 'admin-dashboard', 'admin'];
       let targetPage: Page = 'home';
 
-      if (validPages.includes(rawPath)) {
-        targetPage = rawPath as Page;
-      } else if (validPages.includes(hash)) {
+      // Hash takes priority for in-app navigation; path used for direct URL entry
+      if (validPages.includes(hash)) {
         targetPage = hash as Page;
+      } else if (validPages.includes(rawPath)) {
+        targetPage = rawPath as Page;
       }
 
       // Guard: redirect to login if not authenticated
@@ -59,6 +59,7 @@ function MainApp() {
     setIsAuthenticated(true);
     localStorage.setItem('aba_admin_auth', 'true');
     setCurrentPage('admin-dashboard');
+    window.history.pushState({}, '', '/');
     window.location.hash = 'admin-dashboard';
   };
 
@@ -66,6 +67,7 @@ function MainApp() {
     setIsAuthenticated(false);
     localStorage.removeItem('aba_admin_auth');
     setCurrentPage('home');
+    window.history.pushState({}, '', '/');
     window.location.hash = 'home';
   };
 
