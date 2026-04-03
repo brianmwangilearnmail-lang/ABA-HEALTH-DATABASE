@@ -65,8 +65,11 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
       if (!ctx) return;
       ctx.drawImage(img, 0, 0, width, height);
 
-      // Export as JPEG at 80% quality (dramatically smaller than raw PNG)
-      const compressed = canvas.toDataURL('image/jpeg', 0.8);
+      // Preserve PNG transparency; use JPEG only for photos
+      const isPng = file.type === 'image/png';
+      const compressed = isPng
+        ? canvas.toDataURL('image/png')
+        : canvas.toDataURL('image/jpeg', 0.85);
       URL.revokeObjectURL(objectUrl);
       callback(compressed);
     };
