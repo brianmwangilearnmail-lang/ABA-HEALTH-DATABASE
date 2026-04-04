@@ -30,7 +30,7 @@ export const Header: React.FC<HeaderProps> = ({ onPageChange, currentPage, onCar
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => onPageChange('home')}>
             <span className="font-display font-black text-3xl text-[#ff5e00] tracking-tighter">
-              ABA HEALTH
+              QUINS WELLNESS
             </span>
           </div>
 
@@ -120,7 +120,7 @@ export const Header: React.FC<HeaderProps> = ({ onPageChange, currentPage, onCar
             >
               <div className="p-6 flex items-center justify-between border-b border-gray-100">
                 <span className="font-display font-black text-2xl text-[#ff5e00] tracking-tighter">
-                  ABA HEALTH
+                  QUINS WELLNESS
                 </span>
                 <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-gray-500 hover:text-black bg-gray-100 rounded-full">
                   <X className="w-6 h-6" />

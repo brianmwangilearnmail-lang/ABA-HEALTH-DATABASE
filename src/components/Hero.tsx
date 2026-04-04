@@ -71,7 +71,7 @@ export const Hero: React.FC = () => {
           {hero.mainImage ? (
             <img 
               src={hero.mainImage} 
-              alt="ABA Health Premium Supplement" 
+              alt="Quins Wellness Centre Premium Supplement" 
               className="h-full object-contain drop-shadow-[0_40px_40px_rgba(0,0,0,0.4)]"
             />
           ) : (

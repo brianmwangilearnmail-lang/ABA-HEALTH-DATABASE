@@ -11,16 +11,20 @@ export const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-1">
-            <span className="font-display font-black text-3xl text-[#ff5e00] tracking-tighter mb-6 block">
-              ABA HEALTH
+            <span className="font-display font-black text-3xl text-[#ff5e00] tracking-tighter mb-6 block leading-snug">
+              Quins Wellness Centre
             </span>
             <p className="text-gray-400 font-medium mb-6">
               Premium dietary supplements formulated for maximum efficacy and daily wellness.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 mb-6">
               <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#ff5e00] transition-colors p-2"><Facebook className="w-5 h-5" /></a>
               <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#ff5e00] transition-colors p-2"><Twitter className="w-5 h-5" /></a>
               <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#ff5e00] transition-colors p-2"><Instagram className="w-5 h-5" /></a>
+            </div>
+            <div className="space-y-2 text-gray-400 font-medium">
+              <p>Email: <a href="mailto:kequins09@gmail.com" className="hover:text-white transition-colors">kequins09@gmail.com</a></p>
+              <p>Phone: <a href="tel:+254714279143" className="hover:text-white transition-colors">+254 714 279143</a></p>
             </div>
           </div>
           <div>
@@ -48,7 +52,7 @@ export const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
           </div>
         </div>
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm font-medium">
-          <p>&copy; {new Date().getFullYear()} ABA Health. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Quins Wellness Centre. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <button onClick={() => onPageChange('privacy')} className="hover:text-white transition-colors">Privacy Policy</button>
           </div>

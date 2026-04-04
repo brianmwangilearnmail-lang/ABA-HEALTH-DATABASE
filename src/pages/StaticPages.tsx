@@ -8,9 +8,13 @@ export const ContactPage: React.FC = () => {
         <h1 className="font-display font-black text-5xl md:text-7xl tracking-tighter mb-6 uppercase">
           GET IN <span className="text-[#ff5e00]">TOUCH</span>
         </h1>
-        <p className="text-xl text-white/80 font-medium">
+        <p className="text-xl text-white/80 font-medium max-w-2xl mx-auto mb-4">
           Have questions about our products or your order? We're here to help.
         </p>
+        <div className="flex flex-col items-center gap-2 text-lg font-bold text-[#ccff00]">
+          <a href="mailto:kequins09@gmail.com" className="hover:text-white transition-colors">kequins09@gmail.com</a>
+          <a href="tel:+254714279143" className="hover:text-white transition-colors">+254 714 279143</a>
+        </div>
       </div>
 
       <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 md:p-12 shadow-2xl">
@@ -64,7 +68,7 @@ export const SciencePage: React.FC = () => {
             OUR <span className="text-[#00d2ff]">SCIENCE</span>
           </h1>
           <p className="text-xl text-white/80 max-w-3xl mx-auto font-medium leading-relaxed">
-            At ABA Health, we don't guess. We test. Our formulations are built on clinical research and rigorous scientific validation.
+            At Quins Wellness Centre, we don't guess. We test. Our formulations are built on clinical research and rigorous scientific validation.
           </p>
         </div>
   

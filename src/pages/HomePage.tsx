@@ -41,7 +41,7 @@ export const HomePage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-display font-black text-4xl md:text-5xl text-gray-900 tracking-tighter mb-4">
-              WHY CHOOSE <span className="text-[#ff5e00]">ABA HEALTH</span>
+              WHY CHOOSE <span className="text-[#ff5e00]">QUINS WELLNESS</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
@@ -84,7 +84,7 @@ export const HomePage: React.FC = () => {
               OUR MISSION
             </h2>
             <p className="text-gray-600 text-lg mb-6 font-medium leading-relaxed">
-              At ABA Health, we believe that premium nutrition should be accessible, transparent, and highly effective. Founded by a team of health enthusiasts and clinical researchers, we set out to disrupt the supplement industry by removing fillers and focusing purely on active, bioavailable ingredients.
+              At Quins Wellness Centre, we believe that premium nutrition should be accessible, transparent, and highly effective. Founded by a team of health enthusiasts and clinical researchers, we set out to disrupt the supplement industry by removing fillers and focusing purely on active, bioavailable ingredients.
             </p>
             <p className="text-gray-600 text-lg mb-8 font-medium leading-relaxed">
               Whether you are an elite athlete, a busy professional, or simply looking to optimize your daily wellness, our products are designed to support your unique journey to peak health.
