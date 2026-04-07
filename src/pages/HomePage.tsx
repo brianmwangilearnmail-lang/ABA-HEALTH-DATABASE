@@ -14,13 +14,13 @@ export const HomePage: React.FC = () => {
       <NewArrivalSlider />
 
       {/* Shop Section */}
-      <section id="shop-section" className="relative z-20 bg-black/20 backdrop-blur-sm py-24 border-t border-white/10 w-full">
+      <section id="shop-section" className="relative z-20 bg-gray-50 py-24 border-t border-gray-100 w-full">
         <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16 text-center">
           <div className="mb-16">
-            <h2 className="font-display font-black text-5xl md:text-6xl text-white tracking-tighter mb-4">
+            <h2 className="font-display font-black text-5xl md:text-6xl text-gray-900 tracking-tighter mb-4">
               SHOP <span className="text-[#ccff00]">PREMIUM</span>
             </h2>
-            <p className="text-white/80 text-lg max-w-2xl mx-auto font-medium">
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto font-medium">
               Elevate your daily routine with our scientifically formulated, sustainably sourced supplements.
             </p>
           </div>

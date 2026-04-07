@@ -85,7 +85,7 @@ function MainApp() {
   };
 
   return (
-    <div className="min-h-screen bg-electric-blue relative font-sans selection:bg-[#ccff00] selection:text-black">
+    <div className="min-h-screen bg-white relative font-sans selection:bg-[#ccff00] selection:text-black">
       {/* Topographic Background Pattern */}
       <div className="topo-pattern z-0 fixed inset-0 pointer-events-none"></div>
 

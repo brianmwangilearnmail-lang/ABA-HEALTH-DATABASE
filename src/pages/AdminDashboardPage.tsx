@@ -114,19 +114,19 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
     <div className="min-h-screen pt-24 pb-12 px-4 sm:px-6 lg:px-8 relative z-20">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-3xl shadow-xl">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 bg-white border border-gray-200 p-6 rounded-3xl shadow-xl">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-[#ccff00] rounded-xl flex items-center justify-center text-black">
               <LayoutDashboard className="w-6 h-6" />
             </div>
             <div>
-              <h1 className="font-display font-black text-3xl text-white uppercase tracking-tighter">CMS Dashboard</h1>
-              <p className="text-white/60 text-xs font-bold uppercase tracking-widest mt-1">Logged in as ABA_HEALTH</p>
+              <h1 className="font-display font-black text-3xl text-gray-900 uppercase tracking-tighter">CMS Dashboard</h1>
+              <p className="text-gray-500 text-xs font-bold uppercase tracking-widest mt-1">Logged in as ABA_HEALTH</p>
             </div>
           </div>
           <button 
             onClick={onLogout}
-            className="px-6 py-2 bg-white/5 hover:bg-red-500/20 text-white hover:text-red-400 border border-white/10 hover:border-red-500/50 rounded-xl transition-all flex items-center gap-2 font-bold text-sm"
+            className="px-6 py-2 bg-gray-50 hover:bg-red-50 text-gray-600 hover:text-red-500 border border-gray-200 hover:border-red-500/50 rounded-xl transition-all flex items-center gap-2 font-bold text-sm"
           >
             <LogOut className="w-4 h-4" /> LOG OUT
           </button>
@@ -137,13 +137,13 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
           <div className="lg:col-span-1 space-y-4">
             <button 
               onClick={() => setActiveTab('hero')}
-              className={`w-full p-4 rounded-2xl border transition-all flex items-center gap-4 font-black tracking-widest text-sm uppercase ${activeTab === 'hero' ? 'bg-[#ccff00] text-black border-[#ccff00]' : 'bg-white/5 text-white/60 border-white/10 hover:bg-white/10'}`}
+              className={`w-full p-4 rounded-2xl border transition-all flex items-center gap-4 font-black tracking-widest text-sm uppercase ${activeTab === 'hero' ? 'bg-[#ccff00] text-black border-[#ccff00]' : 'bg-white text-gray-500 border-gray-100 hover:bg-gray-50'}`}
             >
               <Layout className="w-5 h-5" /> Hero Section
             </button>
             <button 
               onClick={() => setActiveTab('products')}
-              className={`w-full p-4 rounded-2xl border transition-all flex items-center gap-4 font-black tracking-widest text-sm uppercase ${activeTab === 'products' ? 'bg-[#ccff00] text-black border-[#ccff00]' : 'bg-white/5 text-white/60 border-white/10 hover:bg-white/10'}`}
+              className={`w-full p-4 rounded-2xl border transition-all flex items-center gap-4 font-black tracking-widest text-sm uppercase ${activeTab === 'products' ? 'bg-[#ccff00] text-black border-[#ccff00]' : 'bg-white text-gray-500 border-gray-100 hover:bg-gray-50'}`}
             >
               <Package className="w-5 h-5" /> Product Catalog
             </button>
@@ -158,51 +158,51 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
-                  className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 shadow-2xl"
+                  className="bg-white border border-gray-200 rounded-3xl p-8 shadow-2xl"
                 >
                     <div className="flex items-center gap-4 mb-8">
                         <Layout className="w-6 h-6 text-[#ccff00]" />
-                        <h2 className="font-display font-black text-2xl text-white uppercase tracking-tighter">Hero Section Settings</h2>
+                        <h2 className="font-display font-black text-2xl text-gray-900 uppercase tracking-tighter">Hero Section Settings</h2>
                     </div>
 
                     <div className="space-y-6">
                         <div className="grid md:grid-cols-2 gap-6 text-left">
                             <div className="space-y-2">
-                                <label className="text-xs font-black uppercase tracking-widest text-white/40 ml-1">Main Heading (Top)</label>
+                                <label className="text-xs font-black uppercase tracking-widest text-gray-400 ml-1">Main Heading (Top)</label>
                                 <input 
                                     type="text" 
                                     value={heroForm.titleTop}
                                     onChange={(e) => setHeroForm({...heroForm, titleTop: e.target.value})}
-                                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#ccff00] transition-colors" 
+                                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors" 
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-xs font-black uppercase tracking-widest text-white/40 ml-1">Main Heading (Bottom)</label>
+                                <label className="text-xs font-black uppercase tracking-widest text-gray-400 ml-1">Main Heading (Bottom)</label>
                                 <input 
                                     type="text" 
                                     value={heroForm.titleBottom}
                                     onChange={(e) => setHeroForm({...heroForm, titleBottom: e.target.value})}
-                                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#ccff00] transition-colors" 
+                                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors" 
                                 />
                             </div>
                         </div>
                         <div className="space-y-2 text-left">
-                            <label className="text-xs font-black uppercase tracking-widest text-white/40 ml-1">Hero Subtitle</label>
+                            <label className="text-xs font-black uppercase tracking-widest text-gray-400 ml-1">Hero Subtitle</label>
                             <textarea 
                                 rows={3}
                                 value={heroForm.subtitle}
                                 onChange={(e) => setHeroForm({...heroForm, subtitle: e.target.value})}
-                                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#ccff00] transition-colors resize-none text-sm" 
+                                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors resize-none text-sm" 
                             />
                         </div>
 
                         <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
                             <div className="flex items-center gap-4 mb-4">
                                 <ImageIcon className="w-5 h-5 text-[#ff5e00]" />
-                                <h3 className="font-bold text-white uppercase tracking-wider text-sm">Visual Preview</h3>
+                                <h3 className="font-bold text-gray-900 uppercase tracking-wider text-sm">Visual Preview</h3>
                             </div>
                             <div className="flex items-center gap-8">
-                                <div className="w-32 h-40 bg-black/40 rounded-xl border border-white/10 flex items-center justify-center overflow-hidden group relative">
+                                <div className="w-32 h-40 bg-gray-50 rounded-xl border border-gray-200 flex items-center justify-center overflow-hidden group relative">
                                      {heroForm.mainImage ? (
                                         <img src={heroForm.mainImage} className="w-full h-full object-contain p-2" alt="Hero" />
                                      ) : (
@@ -216,7 +216,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
                                      </div>
                                 </div>
                                 <div className="space-y-4 flex-grow text-left">
-                                    <p className="text-white/60 text-xs">Recommended: High-resolution supplement photos with transparent backgrounds.</p>
+                                    <p className="text-gray-400 text-xs">Recommended: High-resolution supplement photos with transparent backgrounds.</p>
                                     <input 
                                         type="file" 
                                         ref={heroFileInputRef}
@@ -250,11 +250,11 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
                   exit={{ opacity: 0, x: -20 }}
                   className="space-y-6"
                 >
-                    <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 shadow-2xl">
+                    <div className="bg-white border border-gray-200 rounded-3xl p-8 shadow-2xl">
                         <div className="flex justify-between items-center mb-8">
                             <div className="flex items-center gap-4">
                                 <Package className="w-6 h-6 text-[#ccff00]" />
-                                <h2 className="font-display font-black text-2xl text-white uppercase tracking-tighter">Product Management</h2>
+                                <h2 className="font-display font-black text-2xl text-gray-900 uppercase tracking-tighter">Product Management</h2>
                             </div>
                             <button 
                               onClick={openAddModal}
@@ -267,19 +267,19 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
                         <div className="overflow-x-auto text-left">
                             <table className="w-full text-left border-collapse">
                                 <thead>
-                                    <tr className="border-b border-white/10">
-                                        <th className="py-4 px-4 text-[10px] font-black uppercase tracking-widest text-[#ccff00]">Product Info</th>
-                                        <th className="py-4 px-4 text-[10px] font-black uppercase tracking-widest text-[#ccff00]">Price</th>
-                                        <th className="py-4 px-4 text-[10px] font-black uppercase tracking-widest text-[#ccff00]">Status</th>
-                                        <th className="py-4 px-4 text-[10px] font-black uppercase tracking-widest text-[#ccff00] text-right">Actions</th>
+                                    <tr className="border-b border-gray-100">
+                                        <th className="py-4 px-4 text-[10px] font-black uppercase tracking-widest text-[#ff5e00]">Product Info</th>
+                                        <th className="py-4 px-4 text-[10px] font-black uppercase tracking-widest text-[#ff5e00]">Price</th>
+                                        <th className="py-4 px-4 text-[10px] font-black uppercase tracking-widest text-[#ff5e00]">Status</th>
+                                        <th className="py-4 px-4 text-[10px] font-black uppercase tracking-widest text-[#ff5e00] text-right">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {products.map((product) => (
-                                        <tr key={product.id} className="border-b border-white/5 hover:bg-white/5 transition-colors group">
+                                        <tr key={product.id} className="border-b border-gray-50 hover:bg-gray-50 transition-colors group">
                                             <td className="py-4 px-4">
                                                 <div className="flex items-center gap-4">
-                                                    <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center overflow-hidden flex-shrink-0">
+                                                    <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden flex-shrink-0">
                                                         {product.image ? (
                                                             <img src={product.image} className="w-full h-full object-contain p-1" alt={product.title} />
                                                         ) : (
@@ -287,12 +287,12 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
                                                         )}
                                                     </div>
                                                     <div>
-                                                        <p className="text-white font-bold text-sm leading-tight">{product.title}</p>
-                                                        <p className="text-white/40 text-[10px] uppercase font-bold tracking-tighter">{product.brand}</p>
+                                                        <p className="text-gray-900 font-bold text-sm leading-tight">{product.title}</p>
+                                                        <p className="text-gray-400 text-[10px] uppercase font-bold tracking-tighter">{product.brand}</p>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td className="py-4 px-4 text-white font-black text-sm">
+                                            <td className="py-4 px-4 text-gray-900 font-black text-sm">
                                                 Ksh {product.price.toLocaleString()}
                                             </td>
                                             <td className="py-4 px-4">
@@ -309,13 +309,13 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
                                                       onClick={() => openEditModal(product)}
                                                       className="p-2 hover:bg-[#ccff00] hover:text-black rounded-lg text-white transition-all"
                                                     >
-                                                      <Edit2 className="w-4 h-4" />
+                                                      <Edit2 className="w-4 h-4 text-gray-400 group-hover:text-gray-900" />
                                                     </button>
                                                     <button 
                                                       onClick={() => { if(window.confirm('Delete this product?')) deleteProduct(product.id); }}
-                                                      className="p-2 hover:bg-red-500 hover:text-white rounded-lg text-white transition-all"
+                                                      className="p-2 hover:bg-red-50 hover:text-red-500 rounded-lg transition-all"
                                                     >
-                                                        <Trash2 className="w-4 h-4" />
+                                                        <Trash2 className="w-4 h-4 text-gray-400 group-hover:text-red-500" />
                                                     </button>
                                                 </div>
                                             </td>
@@ -347,18 +347,18 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-2xl bg-white/10 backdrop-blur-2xl border border-white/20 rounded-[2.5rem] p-8 md:p-12 shadow-2xl max-h-[90vh] overflow-y-auto custom-scrollbar"
+              className="relative w-full max-w-2xl bg-white border border-gray-200 rounded-[2.5rem] p-8 md:p-12 shadow-2xl max-h-[90vh] overflow-y-auto custom-scrollbar"
             >
               <div className="flex justify-between items-center mb-8">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 bg-[#ccff00] rounded-xl flex items-center justify-center text-black">
                     {modalMode === 'add' ? <Plus className="w-6 h-6" /> : <Edit2 className="w-6 h-6" />}
                   </div>
-                  <h2 className="font-display font-black text-2xl text-white uppercase tracking-tighter">
+                  <h2 className="font-display font-black text-2xl text-gray-900 uppercase tracking-tighter">
                     {modalMode === 'add' ? 'Add New Product' : 'Edit Product'}
                   </h2>
                 </div>
-                <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-white/10 rounded-full text-white/40 hover:text-white transition-colors">
+                <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-gray-100 rounded-full text-gray-400 hover:text-gray-900 transition-colors">
                   <X className="w-6 h-6" />
                 </button>
               </div>
@@ -367,26 +367,26 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
                 <div className="flex flex-col md:flex-row gap-8 mb-4">
                     {/* Image Upload Area */}
                     <div className="w-full md:w-1/3 flex flex-col gap-4">
-                        <label className="text-[10px] font-black uppercase tracking-widest text-[#ccff00] ml-1">Product Photo</label>
+                        <label className="text-[10px] font-black uppercase tracking-widest text-[#ff5e00] ml-1">Product Photo</label>
                         <div 
-                            className="aspect-square bg-black/40 border-2 border-dashed border-white/10 rounded-3xl flex flex-col items-center justify-center gap-4 group cursor-pointer hover:border-[#ccff00]/50 transition-colors overflow-hidden relative"
+                            className="aspect-square bg-gray-50 border-2 border-dashed border-gray-200 rounded-3xl flex flex-col items-center justify-center gap-4 group cursor-pointer hover:border-[#ff5e00]/50 transition-colors overflow-hidden relative"
                             onClick={() => productFileInputRef.current?.click()}
                         >
                             {editingProduct?.image ? (
                                 <>
                                     <img src={editingProduct.image} className="w-full h-full object-contain p-4" alt="Preview" />
-                                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                        <CloudUpload className="w-10 h-10 text-[#ccff00]" />
+                                    <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                        <CloudUpload className="w-10 h-10 text-[#ff5e00]" />
                                     </div>
                                 </>
                             ) : (
                                 <>
-                                    <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                                        <CloudUpload className="w-6 h-6 text-white/40 group-hover:text-[#ccff00]" />
+                                    <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <CloudUpload className="w-6 h-6 text-gray-400 group-hover:text-[#ff5e00]" />
                                     </div>
                                     <div className="text-center px-4">
-                                        <p className="text-white font-bold text-xs">Click to upload</p>
-                                        <p className="text-white/30 text-[10px] mt-1 uppercase tracking-tighter">PNG, JPG up to 2MB</p>
+                                        <p className="text-gray-900 font-bold text-xs">Click to upload</p>
+                                        <p className="text-gray-400 text-[10px] mt-1 uppercase tracking-tighter">PNG, JPG up to 2MB</p>
                                     </div>
                                 </>
                             )}
@@ -402,48 +402,48 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
 
                     <div className="flex-1 space-y-6">
                         <div className="space-y-2 text-left">
-                            <label className="text-[10px] font-black uppercase tracking-widest text-[#ccff00] ml-1">Product Title</label>
+                            <label className="text-[10px] font-black uppercase tracking-widest text-[#ff5e00] ml-1">Product Title</label>
                             <input 
                                 type="text" 
                                 required
                                 value={editingProduct?.title || ''}
                                 onChange={(e) => setEditingProduct({...editingProduct!, title: e.target.value})}
-                                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#ccff00] transition-colors font-medium" 
+                                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors font-medium" 
                                 placeholder="e.g. Omega-3 Fish Oil"
                             />
                         </div>
                         <div className="grid grid-cols-2 gap-4 text-left">
                             <div className="space-y-2">
-                                <label className="text-[10px] font-black uppercase tracking-widest text-[#ccff00] ml-1">Brand Name</label>
+                                <label className="text-[10px] font-black uppercase tracking-widest text-[#ff5e00] ml-1">Brand Name</label>
                                 <input 
                                     type="text" 
                                     required
                                     value={editingProduct?.brand || ''}
                                     onChange={(e) => setEditingProduct({...editingProduct!, brand: e.target.value})}
-                                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#ccff00] transition-colors text-sm" 
+                                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors text-sm" 
                                     placeholder="e.g. Natural Factors"
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-[10px] font-black uppercase tracking-widest text-[#ccff00] ml-1">Price (KSh)</label>
+                                <label className="text-[10px] font-black uppercase tracking-widest text-[#ff5e00] ml-1">Price (KSh)</label>
                                 <input 
                                     type="number" 
                                     required
                                     value={editingProduct?.price || ''}
                                     onChange={(e) => setEditingProduct({...editingProduct!, price: Number(e.target.value)})}
-                                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#ccff00] transition-colors text-sm" 
+                                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors text-sm" 
                                     placeholder="0"
                                 />
                             </div>
                         </div>
                         <div className="space-y-2 text-left">
-                            <label className="text-[10px] font-black uppercase tracking-widest text-[#ccff00] ml-1">Composition / Description</label>
+                            <label className="text-[10px] font-black uppercase tracking-widest text-[#ff5e00] ml-1">Composition / Description</label>
                             <textarea 
                                 rows={3}
                                 required
                                 value={editingProduct?.composition || ''}
                                 onChange={(e) => setEditingProduct({...editingProduct!, composition: e.target.value})}
-                                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#ccff00] transition-colors resize-none text-sm" 
+                                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors resize-none text-sm" 
                                 placeholder="e.g. Contains high potency EPA/DHA..."
                             />
                         </div>
@@ -452,20 +452,20 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
 
                 <div className="grid md:grid-cols-2 gap-6 items-end">
                     <div className="space-y-2 text-left">
-                        <label className="text-[10px] font-black uppercase tracking-widest text-[#ccff00] ml-1">Manual Image URL (Optional)</label>
+                        <label className="text-[10px] font-black uppercase tracking-widest text-[#ff5e00] ml-1">Manual Image URL (Optional)</label>
                         <input 
                             type="text" 
                             value={editingProduct?.image || ''}
                             onChange={(e) => setEditingProduct({...editingProduct!, image: e.target.value})}
-                            className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#ccff00] transition-colors text-xs" 
+                            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors text-xs" 
                             placeholder="/images/product.png"
                         />
                     </div>
-                    <div className="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/10 cursor-pointer h-[50px] mb-[2px]" onClick={() => setEditingProduct({...editingProduct!, inStock: !editingProduct?.inStock})}>
-                        <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all ${editingProduct?.inStock ? 'bg-[#ccff00] border-[#ccff00]' : 'border-white/20'}`}>
-                            {editingProduct?.inStock && <Check className="w-4 h-4 text-black" />}
+                    <div className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-200 cursor-pointer h-[50px] mb-[2px]" onClick={() => setEditingProduct({...editingProduct!, inStock: !editingProduct?.inStock})}>
+                        <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all ${editingProduct?.inStock ? 'bg-[#ff5e00] border-[#ff5e00]' : 'border-gray-200'}`}>
+                            {editingProduct?.inStock && <Check className="w-4 h-4 text-white" />}
                         </div>
-                        <span className="text-white font-bold text-[10px] tracking-wider uppercase">In Stock</span>
+                        <span className="text-gray-900 font-bold text-[10px] tracking-wider uppercase">In Stock</span>
                     </div>
                 </div>
 
@@ -473,7 +473,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
                   <button 
                     type="button"
                     onClick={() => setIsModalOpen(false)}
-                    className="flex-1 px-6 py-4 bg-white/5 hover:bg-white/10 text-white rounded-xl font-black text-xs tracking-widest transition-all border border-white/10"
+                    className="flex-1 px-6 py-4 bg-gray-50 hover:bg-gray-100 text-gray-500 rounded-xl font-black text-xs tracking-widest transition-all border border-gray-200"
                   >
                     CANCEL
                   </button>

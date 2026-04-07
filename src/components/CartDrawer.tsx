@@ -42,16 +42,16 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 h-full w-full max-w-md bg-[#00d2ff] bg-gradient-to-b from-[#00d2ff] to-[#0088ff] z-[101] shadow-2xl flex flex-col"
+            className="fixed top-0 right-0 h-full w-full max-w-md bg-white z-[101] shadow-2xl flex flex-col"
           >
             {/* Header */}
-            <div className="p-6 border-b border-white/20 flex justify-between items-center bg-white/10 backdrop-blur-md">
+            <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-white shadow-sm">
               <div className="flex items-center gap-3">
                 <ShoppingBag className="w-6 h-6 text-[#ccff00]" />
-                <h2 className="font-display font-black text-2xl text-white uppercase tracking-tighter">Your Bag</h2>
+                <h2 className="font-display font-black text-2xl text-gray-900 uppercase tracking-tighter">Your Bag</h2>
                 <span className="bg-[#ccff00] text-black text-[10px] font-black px-2 py-0.5 rounded-full">{totalItems} ITEMS</span>
               </div>
-              <button onClick={onClose} className="p-2 rounded-full hover:bg-white/10 text-white transition-colors">
+              <button onClick={onClose} className="p-2 rounded-full hover:bg-gray-100 text-gray-500 transition-colors">
                 <X className="w-6 h-6" />
               </button>
             </div>
@@ -59,10 +59,10 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
             {/* Content */}
             <div className="flex-grow overflow-y-auto p-6 space-y-6 custom-scrollbar">
               {cart.length === 0 ? (
-                <div className="h-full flex flex-col items-center justify-center text-center text-white/60 space-y-4">
+                <div className="h-full flex flex-col items-center justify-center text-center text-gray-400 space-y-4">
                   <ShoppingBag className="w-16 h-16 opacity-20" />
                   <div>
-                    <p className="font-bold text-xl text-white">Your bag is empty</p>
+                    <p className="font-bold text-xl text-gray-900">Your bag is empty</p>
                     <p className="text-sm">Start adding some high-quality supplements!</p>
                   </div>
                   <button 
@@ -74,20 +74,20 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
                 </div>
               ) : (
                 cart.map((item) => (
-                  <div key={item.id} className="flex gap-4 bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10 group">
-                    <div className="w-20 h-20 bg-white/5 rounded-xl flex-shrink-0 flex items-center justify-center overflow-hidden">
+                  <div key={item.id} className="flex gap-4 bg-gray-50 p-4 rounded-2xl border border-gray-100 group">
+                    <div className="w-20 h-20 bg-white rounded-xl flex-shrink-0 flex items-center justify-center overflow-hidden border border-gray-200">
                       {item.image ? (
                         <img src={item.image} alt={item.title} className="w-full h-full object-contain p-2" />
                       ) : (
-                        <ShoppingBag className="w-8 h-8 text-white/20" />
+                        <ShoppingBag className="w-8 h-8 text-gray-200" />
                       )}
                     </div>
                     <div className="flex-grow flex flex-col">
                       <div className="flex justify-between items-start">
-                        <h3 className="font-bold text-white text-sm line-clamp-2 leading-tight pr-4">{item.title}</h3>
-                        <button 
+                        <h3 className="font-bold text-gray-900 text-sm line-clamp-2 leading-tight pr-4">{item.title}</h3>
+                          <button 
                           onClick={() => removeFromCart(item.id)}
-                          className="text-white/40 hover:text-red-400 transition-colors"
+                          className="text-gray-300 hover:text-red-500 transition-colors"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
@@ -95,22 +95,22 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
                       <p className="text-[#ccff00] font-black mt-1 text-sm">Ksh {item.price.toLocaleString()}</p>
                       
                       <div className="flex items-center justify-between mt-auto pt-2">
-                        <div className="flex items-center gap-3 bg-black/20 rounded-full px-2 py-1 border border-white/10">
+                        <div className="flex items-center gap-3 bg-white rounded-full px-2 py-1 border border-gray-200 shadow-sm">
                           <button 
                             onClick={() => updateQuantity(item.id, -1)}
-                            className="w-6 h-6 rounded-full flex items-center justify-center text-white hover:bg-white/10"
+                            className="w-6 h-6 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100"
                           >
                             <Minus className="w-3 h-3" />
                           </button>
-                          <span className="text-xs font-bold text-white w-4 text-center">{item.quantity}</span>
+                          <span className="text-xs font-bold text-gray-900 w-4 text-center">{item.quantity}</span>
                           <button 
                             onClick={() => updateQuantity(item.id, 1)}
-                            className="w-6 h-6 rounded-full flex items-center justify-center text-white hover:bg-white/10"
+                            className="w-6 h-6 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100"
                           >
                             <Plus className="w-3 h-3" />
                           </button>
                         </div>
-                        <p className="text-white font-black text-sm">Ksh {(item.price * item.quantity).toLocaleString()}</p>
+                        <p className="text-gray-900 font-black text-sm">Ksh {(item.price * item.quantity).toLocaleString()}</p>
                       </div>
                     </div>
                   </div>
@@ -120,24 +120,24 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
 
             {/* Footer / Summary */}
             {cart.length > 0 && (
-              <div className="p-6 bg-white/10 backdrop-blur-xl border-t border-white/20 space-y-4">
+              <div className="p-6 bg-white border-t border-gray-200 shadow-2xl space-y-4">
                 <div className="space-y-2">
-                  <div className="flex justify-between text-white/70 text-sm font-medium">
+                  <div className="flex justify-between text-gray-500 text-sm font-medium">
                     <span>Subtotal</span>
                     <span>Ksh {totalPrice.toLocaleString()}</span>
                   </div>
-                  <div className="flex justify-between text-white/70 text-sm font-medium">
+                  <div className="flex justify-between text-gray-500 text-sm font-medium">
                     <span>Shipping</span>
-                    <span className="text-[#ccff00] font-black">FREE</span>
+                    <span className="text-[#ff5e00] font-black">FREE</span>
                   </div>
-                  <div className="flex justify-between text-white text-xl font-black pt-2 border-t border-white/10">
+                  <div className="flex justify-between text-gray-900 text-xl font-black pt-2 border-t border-gray-100">
                     <span>Total</span>
-                    <span className="text-[#ccff00]">Ksh {totalPrice.toLocaleString()}</span>
+                    <span className="text-[#ff5e00]">Ksh {totalPrice.toLocaleString()}</span>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 text-[10px] uppercase font-black tracking-widest text-[#ccff00] justify-center py-2 bg-black/20 rounded-lg">
-                  <ShieldCheck className="w-3 h-3" />
+                <div className="flex items-center gap-2 text-[10px] uppercase font-black tracking-widest text-gray-400 justify-center py-2 bg-gray-50 rounded-lg border border-gray-100">
+                  <ShieldCheck className="w-3 h-3 text-[#ccff00]" />
                   Secure Checkout Guaranteed
                 </div>
 

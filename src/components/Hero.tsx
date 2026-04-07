@@ -24,7 +24,7 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 50, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display font-black text-[18vw] md:text-[15vw] leading-[0.8] text-[#ccff00] text-center tracking-tighter drop-shadow-2xl whitespace-nowrap"
+          className="font-display font-black text-[18vw] md:text-[15vw] leading-[0.8] text-[#ccff00] text-center tracking-tighter drop-shadow-xl whitespace-nowrap"
         >
           {hero.titleTop}
         </motion.h1>
@@ -43,7 +43,7 @@ export const Hero: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="relative z-30 mt-4 md:mt-8 mb-2 text-white/90 font-medium text-base md:text-lg text-center max-w-xl mx-auto px-4"
+        className="relative z-30 mt-4 md:mt-8 mb-2 text-gray-800 font-semibold text-base md:text-lg text-center max-w-xl mx-auto px-4"
       >
         {hero.subtitle}
       </motion.p>
@@ -75,7 +75,7 @@ export const Hero: React.FC = () => {
               className="h-full object-contain drop-shadow-[0_40px_40px_rgba(0,0,0,0.4)]"
             />
           ) : (
-            <div className="h-[40vh] md:h-[50vh] aspect-[3/4] bg-white/10 backdrop-blur-md border-2 border-dashed border-white/50 rounded-3xl flex flex-col items-center justify-center p-8 text-white text-center hover:bg-white/20 transition-all shadow-[0_40px_40px_rgba(0,0,0,0.2)] group-hover:scale-105 group-hover:border-[#ccff00]">
+            <div className="h-[40vh] md:h-[50vh] aspect-[3/4] bg-gray-100 backdrop-blur-md border-2 border-dashed border-gray-300 rounded-3xl flex flex-col items-center justify-center p-8 text-gray-500 text-center hover:bg-gray-200 transition-all shadow-xl group-hover:scale-105 group-hover:border-[#ccff00]">
               <Upload className="w-16 h-16 mb-4 text-[#ccff00] group-hover:scale-110 transition-transform" />
               <p className="font-black text-2xl mb-2 tracking-tight">CLICK TO UPLOAD</p>
               <p className="text-sm font-medium opacity-90">Upload your Salmon Oil image here!</p>
