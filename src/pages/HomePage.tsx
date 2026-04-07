@@ -46,7 +46,7 @@ export const HomePage: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
             <div className="flex flex-col items-center">
-              <div className="w-20 h-20 bg-[#15803d]/20 rounded-full flex items-center justify-center mb-6 text-[#88aa00]">
+              <div className="w-20 h-20 bg-[#15803d]/10 rounded-full flex items-center justify-center mb-6 text-[#15803d]">
                 <Leaf className="w-10 h-10" />
               </div>
               <h3 className="font-black text-xl mb-3 text-gray-900">Sustainably Sourced</h3>

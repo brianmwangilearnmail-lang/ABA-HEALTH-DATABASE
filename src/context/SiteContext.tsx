@@ -11,6 +11,23 @@ export interface Product {
     inStock: boolean;
 }
 
+export interface Order {
+    id: number;
+    customer_name: string;
+    total_amount: number;
+    status: string;
+    created_at: string;
+}
+
+export interface InventoryBatch {
+    id: string;
+    productId: number;
+    batchNumber: string;
+    expiryDate: string;
+    quantity: number;
+    status: 'good' | 'expiring' | 'expired';
+}
+
 export interface HeroContent {
     titleTop: string;
     titleBottom: string;
@@ -18,9 +35,29 @@ export interface HeroContent {
     mainImage?: string;
 }
 
+export interface AnalyticsMetric {
+    value: string | number;
+    change: number;
+    trend: 'up' | 'down' | 'neutral';
+    label: string;
+}
+
+export interface AnalyticsData {
+    operations: {
+        totalRevenue: AnalyticsMetric;
+        orderVolume: AnalyticsMetric;
+        daysOnHand: AnalyticsMetric;
+        refundRate: AnalyticsMetric;
+        topSkus: Array<{ id: number; title: string; sales: number; revenue: number }>;
+    };
+}
+
 interface SiteContextType {
     products: Product[];
     hero: HeroContent;
+    analytics: AnalyticsData;
+    inventoryBatches: InventoryBatch[];
+    orders: Order[];
     loading: boolean;
     updateProduct: (id: number, updates: Partial<Product>) => Promise<void>;
     addProduct: (product: Omit<Product, 'id'>) => Promise<void>;
@@ -40,6 +77,8 @@ const INITIAL_HERO: HeroContent = {
 export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [products, setProducts] = useState<Product[]>([]);
     const [hero, setHero] = useState<HeroContent>(INITIAL_HERO);
+    const [orders, setOrders] = useState<Order[]>([]);
+    const [inventoryBatches, setInventoryBatches] = useState<InventoryBatch[]>([]);
     const [loading, setLoading] = useState(true);
 
     // Initial Fetch
@@ -47,30 +86,45 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
         fetchData();
         
         // Listen for real-time changes
-        const productsSubscription = supabase
-            .channel('public:products')
-            .on('postgres_changes', { event: '*', schema: 'public', table: 'products' }, () => {
-                fetchProducts();
-            })
-            .subscribe();
+        const channels = [
+            supabase.channel('public:products').on('postgres_changes', { event: '*', schema: 'public', table: 'products' }, fetchProducts),
+            supabase.channel('public:orders').on('postgres_changes', { event: '*', schema: 'public', table: 'orders' }, fetchOrders),
+            supabase.channel('public:inventory').on('postgres_changes', { event: '*', schema: 'public', table: 'inventory_batches' }, fetchInventoryBatches),
+            supabase.channel('public:hero').on('postgres_changes', { event: '*', schema: 'public', table: 'hero_content' }, fetchHero)
+        ];
 
-        const heroSubscription = supabase
-            .channel('public:hero_content')
-            .on('postgres_changes', { event: '*', schema: 'public', table: 'hero_content' }, () => {
-                fetchHero();
-            })
-            .subscribe();
+        channels.forEach(ch => ch.subscribe());
 
         return () => {
-            supabase.removeChannel(productsSubscription);
-            supabase.removeChannel(heroSubscription);
+            channels.forEach(ch => supabase.removeChannel(ch));
         };
     }, []);
 
     const fetchData = async () => {
         setLoading(true);
-        await Promise.all([fetchProducts(), fetchHero()]);
+        await Promise.all([fetchProducts(), fetchHero(), fetchOrders(), fetchInventoryBatches()]);
         setLoading(false);
+    };
+
+    const fetchOrders = async () => {
+        const { data, error } = await supabase.from('orders').select('*').order('created_at', { ascending: false });
+        if (error) console.error('Error fetching orders:', error);
+        else if (data) setOrders(data);
+    };
+
+    const fetchInventoryBatches = async () => {
+        const { data, error } = await supabase.from('inventory_batches').select('*');
+        if (error) console.error('Error fetching inventory:', error);
+        else if (data) {
+            setInventoryBatches(data.map((b: any) => ({
+                id: b.id.toString(),
+                productId: b.product_id,
+                batchNumber: b.batch_number,
+                expiryDate: b.expiry_date,
+                quantity: b.remaining_quantity,
+                status: b.status
+            })));
+        }
     };
 
     const fetchProducts = async () => {
@@ -81,11 +135,9 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
         if (error) {
             console.error('Error fetching products:', error);
-            // Fallback to localStorage if Supabase is not configured yet
             const saved = localStorage.getItem('aba_products');
             if (saved) setProducts(JSON.parse(saved));
         } else if (data) {
-            // Map snake_case from DB to camelCase in App
             const mapped = data.map((p: any) => ({
                 id: p.id,
                 title: p.title,
@@ -120,8 +172,31 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
         }
     };
 
+    const calculateAnalytics = (): AnalyticsData => {
+        const completedOrders = orders.filter(o => o.status === 'completed');
+        const refundedOrders = orders.filter(o => o.status === 'refunded');
+        
+        const totalRevenue = completedOrders.reduce((sum, o) => sum + Number(o.total_amount), 0);
+        const orderVolume = completedOrders.length;
+        const refundRate = orders.length > 0 ? (refundedOrders.length / orders.length) * 100 : 0;
+        
+        // Mocking change percentages and trends based on small logic for now
+        return {
+            operations: {
+                totalRevenue: { value: `Ksh ${totalRevenue.toLocaleString()}`, change: 15, trend: 'up', label: 'Net Revenue' },
+                orderVolume: { value: orderVolume, change: 8, trend: 'up', label: 'Total Orders' },
+                daysOnHand: { value: '42 Days', change: -5, trend: 'down', label: 'Stock Health' }, // Placeholder logic
+                refundRate: { value: `${refundRate.toFixed(1)}%`, change: -0.2, trend: 'down', label: 'Refund Rate' },
+                topSkus: [
+                   { id: 1, title: 'Wild Alaskan Salmon Oil', sales: 45, revenue: 157500 },
+                   { id: 5, title: 'Magnesium Citrate', sales: 38, revenue: 83600 },
+                   { id: 7, title: 'Methylcobalamin B12', sales: 31, revenue: 37200 }
+                ]
+            }
+        };
+    };
+
     const updateProduct = async (id: number, updates: Partial<Product>) => {
-        // Map camelCase back to snake_case for Supabase
         const dbUpdates: any = {};
         if (updates.title !== undefined) dbUpdates.title = updates.title;
         if (updates.brand !== undefined) dbUpdates.brand = updates.brand;
@@ -137,7 +212,6 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
         if (error) {
             console.error('Error updating product:', error);
-            // Fallback for demo
             setProducts(prev => prev.map(p => p.id === id ? { ...p, ...updates } : p));
         }
     };
@@ -156,8 +230,8 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
         if (error) {
             console.error('Error adding product:', error);
-            localStorage.setItem('aba_products', JSON.stringify([...products, { ...p, id: Date.now() }]));
-            setProducts(prev => [...prev, { ...p, id: Date.now() }]);
+            const newId = Date.now();
+            setProducts(prev => [...prev, { ...p, id: newId }]);
         }
     };
 
@@ -192,7 +266,18 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
 
     return (
-        <SiteContext.Provider value={{ products, hero, loading, updateProduct, addProduct, deleteProduct, updateHero }}>
+        <SiteContext.Provider value={{ 
+            products, 
+            hero, 
+            analytics: calculateAnalytics(), 
+            inventoryBatches, 
+            orders,
+            loading, 
+            updateProduct, 
+            addProduct, 
+            deleteProduct, 
+            updateHero 
+        }}>
             {children}
         </SiteContext.Provider>
     );

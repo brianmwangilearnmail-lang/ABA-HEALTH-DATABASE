@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
-import { LayoutDashboard, Plus, Trash2, Edit2, LogOut, Package, Image as ImageIcon, Layout, Save, X, Check, Upload, CloudUpload } from 'lucide-react';
+import { LayoutDashboard, Plus, Trash2, Edit2, LogOut, Package, Image as ImageIcon, Layout, Save, X, Check, Upload, CloudUpload, BarChart3 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useSite, Product } from '../context/SiteContext';
+import { AnalyticsDashboard } from '../components/AnalyticsDashboard';
 
 interface AdminDashboardPageProps {
   onLogout: () => void;
@@ -9,7 +10,7 @@ interface AdminDashboardPageProps {
 
 export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout }) => {
   const { products, hero, updateHero, updateProduct, addProduct, deleteProduct } = useSite();
-  const [activeTab, setActiveTab] = useState<'hero' | 'products'>('hero');
+  const [activeTab, setActiveTab] = useState<'hero' | 'products' | 'analytics'>('analytics');
   
   // Hero form state
   const [heroForm, setHeroForm] = useState(hero);
@@ -136,10 +137,10 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
           {/* Sidebar Nav */}
           <div className="lg:col-span-1 space-y-4">
             <button 
-              onClick={() => setActiveTab('hero')}
-              className={`w-full p-4 rounded-2xl border transition-all flex items-center gap-4 font-black tracking-widest text-sm uppercase ${activeTab === 'hero' ? 'bg-[#15803d] text-white border-[#15803d]' : 'bg-white text-gray-500 border-gray-100 hover:bg-gray-50'}`}
+              onClick={() => setActiveTab('analytics')}
+              className={`w-full p-4 rounded-2xl border transition-all flex items-center gap-4 font-black tracking-widest text-sm uppercase ${activeTab === 'analytics' ? 'bg-[#15803d] text-white border-[#15803d]' : 'bg-white text-gray-500 border-gray-100 hover:bg-gray-50'}`}
             >
-              <Layout className="w-5 h-5" /> Hero Section
+              <BarChart3 className="w-5 h-5" /> Analytics
             </button>
             <button 
               onClick={() => setActiveTab('products')}
@@ -147,12 +148,27 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
             >
               <Package className="w-5 h-5" /> Product Catalog
             </button>
+            <button 
+              onClick={() => setActiveTab('hero')}
+              className={`w-full p-4 rounded-2xl border transition-all flex items-center gap-4 font-black tracking-widest text-sm uppercase ${activeTab === 'hero' ? 'bg-[#15803d] text-white border-[#15803d]' : 'bg-white text-gray-500 border-gray-100 hover:bg-gray-50'}`}
+            >
+              <Layout className="w-5 h-5" /> Hero Section
+            </button>
           </div>
 
           {/* Main Controls */}
           <div className="lg:col-span-3">
             <AnimatePresence mode="wait">
-              {activeTab === 'hero' ? (
+              {activeTab === 'analytics' ? (
+                <motion.div 
+                  key="analytics-tab"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                >
+                  <AnalyticsDashboard />
+                </motion.div>
+              ) : activeTab === 'hero' ? (
                 <motion.div 
                   key="hero-tab"
                   initial={{ opacity: 0, x: 20 }}
