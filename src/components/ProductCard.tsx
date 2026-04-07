@@ -20,13 +20,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, variant = 'de
 
   if (variant === 'new-arrival') {
     return (
-      <div className="min-w-[260px] w-[260px] bg-white border border-gray-200 rounded-[1.25rem] p-4 flex flex-col gap-4 group hover:-translate-y-1 transition-all duration-300 hover:border-[#ff5e00] shadow-sm hover:shadow-xl">
+      <div className="min-w-[260px] w-[260px] bg-white border border-gray-200 rounded-[1.25rem] p-4 flex flex-col gap-4 group hover:-translate-y-1 transition-all duration-300 hover:border-[#14532d] shadow-sm hover:shadow-xl">
         <div className="w-full aspect-square bg-white/5 rounded-xl relative flex items-center justify-center p-4 overflow-hidden">
           <div className="absolute top-2 right-2 flex flex-col gap-2 z-10">
-            <button className="w-8 h-8 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-[#ccff00] hover:text-black transition-colors">
+            <button className="w-8 h-8 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-[#15803d] hover:text-white transition-colors">
               <Eye className="w-4 h-4" />
             </button>
-            <button className="w-8 h-8 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-[#ff5e00] hover:text-white hover:border-[#ff5e00] transition-colors">
+            <button className="w-8 h-8 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-[#14532d] hover:text-white hover:border-[#14532d] transition-colors">
               <Heart className="w-4 h-4" />
             </button>
           </div>
@@ -41,11 +41,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, variant = 'de
         </div>
         <div className="flex flex-col gap-1 flex-grow">
           <h3 className="font-display font-bold text-[1.1rem] text-gray-900 leading-[1.2] line-clamp-2">{product.title}</h3>
-          <p className="text-[#ccff00] font-black text-lg mt-1">Ksh {product.price.toLocaleString()}</p>
+          <p className="text-[#15803d] font-black text-lg mt-1">Ksh {product.price.toLocaleString()}</p>
         </div>
         <button 
           onClick={handleAddToCart}
-          className="w-full py-3 rounded-xl bg-gray-100 hover:bg-[#ff5e00] text-gray-900 hover:text-white font-black text-sm tracking-widest transition-all flex items-center justify-center gap-2 border border-transparent hover:shadow-[0_0_20px_rgba(255,94,0,0.4)]"
+          className="w-full py-3 rounded-xl bg-gray-100 hover:bg-[#14532d] text-gray-900 hover:text-white font-black text-sm tracking-widest transition-all flex items-center justify-center gap-2 border border-transparent hover:shadow-[0_0_20px_rgba(255,94,0,0.4)]"
         >
           <Plus className="w-4 h-4" /> ADD TO CART
         </button>
@@ -54,9 +54,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, variant = 'de
   }
 
   return (
-    <div className="bg-white border border-gray-200 rounded-[1.25rem] p-[1.25rem] relative transition-all duration-300 flex flex-col gap-4 cursor-pointer hover:-translate-y-[5px] hover:border-[#ff5e00] shadow-sm hover:shadow-2xl group text-left">
+    <div className="bg-white border border-gray-200 rounded-[1.25rem] p-[1.25rem] relative transition-all duration-300 flex flex-col gap-4 cursor-pointer hover:-translate-y-[5px] hover:border-[#14532d] shadow-sm hover:shadow-2xl group text-left">
       
-      <span className="absolute top-4 right-4 px-3 py-1 rounded-full text-[0.65rem] font-black uppercase bg-[#ccff00] text-black z-10">
+      <span className="absolute top-4 right-4 px-3 py-1 rounded-full text-[0.65rem] font-black uppercase bg-[#15803d] text-white z-10">
         {product.brand}
       </span>
 
@@ -80,7 +80,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, variant = 'de
         <div className="flex justify-between items-end">
           <div>
             <p className="text-gray-400 text-[10px] font-bold tracking-wider mb-1 uppercase">Total Price</p>
-            <p className="text-[#ccff00] font-black text-xl">Ksh {(product.price * quantity).toLocaleString()}</p>
+            <p className="text-[#15803d] font-black text-xl">Ksh {(product.price * quantity).toLocaleString()}</p>
           </div>
           
           <div className="flex items-center space-x-2 bg-gray-100 rounded-full p-1 border border-gray-200">
@@ -102,7 +102,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, variant = 'de
         
         <button 
           onClick={(e) => { e.stopPropagation(); handleAddToCart(); }}
-          className="w-full bg-[#ff5e00] hover:bg-[#e05300] text-white py-3 rounded-xl font-black text-sm tracking-widest transition-all hover:shadow-lg border border-[#ff5e00] flex items-center justify-center space-x-2"
+          className="w-full bg-[#14532d] hover:bg-[#114022] text-white py-3 rounded-xl font-black text-sm tracking-widest transition-all hover:shadow-lg border border-[#14532d] flex items-center justify-center space-x-2"
         >
           <ShoppingCart className="w-4 h-4" />
           <span>ADD TO CART</span>

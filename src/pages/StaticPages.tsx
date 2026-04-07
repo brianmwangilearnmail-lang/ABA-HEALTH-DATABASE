@@ -6,12 +6,12 @@ export const ContactPage: React.FC = () => {
     <div className="relative z-20 py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-gray-900">
       <div className="text-center mb-16">
         <h1 className="font-display font-black text-5xl md:text-7xl tracking-tighter mb-6 uppercase">
-          GET IN <span className="text-[#ff5e00]">TOUCH</span>
+          GET IN <span className="text-[#14532d]">TOUCH</span>
         </h1>
         <p className="text-xl text-gray-600 font-medium max-w-2xl mx-auto mb-4">
           Have questions about our products or your order? We're here to help.
         </p>
-        <div className="flex flex-col items-center gap-2 text-lg font-bold text-[#ccff00]">
+        <div className="flex flex-col items-center gap-2 text-lg font-bold text-[#15803d]">
           <a href="mailto:kequins09@gmail.com" className="hover:text-gray-900 transition-colors">kequins09@gmail.com</a>
           <a href="tel:+254714279143" className="hover:text-gray-900 transition-colors">+254 714 279143</a>
         </div>
@@ -22,22 +22,22 @@ export const ContactPage: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-6 text-left">
             <div className="space-y-2">
               <label className="text-sm font-bold tracking-wider uppercase text-gray-500">First Name</label>
-              <input type="text" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors" placeholder="John" required />
+              <input type="text" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#14532d] transition-colors" placeholder="John" required />
             </div>
             <div className="space-y-2">
               <label className="text-sm font-bold tracking-wider uppercase text-gray-500">Last Name</label>
-              <input type="text" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors" placeholder="Doe" required />
+              <input type="text" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#14532d] transition-colors" placeholder="Doe" required />
             </div>
           </div>
           
           <div className="space-y-2 text-left">
             <label className="text-sm font-bold tracking-wider uppercase text-gray-500">Email Address</label>
-            <input type="email" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors" placeholder="john@example.com" required />
+            <input type="email" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#14532d] transition-colors" placeholder="john@example.com" required />
           </div>
 
           <div className="space-y-2 text-left">
             <label className="text-sm font-bold tracking-wider uppercase text-gray-500">Subject</label>
-            <select className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors appearance-none" required>
+            <select className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#14532d] transition-colors appearance-none" required>
               <option value="" className="text-black">Select a topic...</option>
               <option value="order" className="text-black">Order Inquiry</option>
               <option value="product" className="text-black">Product Question</option>
@@ -48,10 +48,10 @@ export const ContactPage: React.FC = () => {
 
           <div className="space-y-2 text-left">
             <label className="text-sm font-bold tracking-wider uppercase text-gray-500">Message</label>
-            <textarea rows={5} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors resize-none" placeholder="How can we help you?" required></textarea>
+            <textarea rows={5} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#14532d] transition-colors resize-none" placeholder="How can we help you?" required></textarea>
           </div>
 
-          <button type="submit" className="w-full bg-[#ccff00] hover:bg-[#b3e600] text-black py-4 rounded-xl font-black text-lg tracking-widest transition-all hover:shadow-[0_0_20px_rgba(204,255,0,0.4)] mt-4 active:scale-95">
+          <button type="submit" className="w-full bg-[#15803d] hover:bg-[#114022] text-white py-4 rounded-xl font-black text-lg tracking-widest transition-all hover:shadow-[0_0_20px_rgba(21,128,61,0.4)] mt-4 active:scale-95">
             SEND MESSAGE
           </button>
         </form>
@@ -65,7 +65,7 @@ export const SciencePage: React.FC = () => {
       <div className="relative z-20 py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-gray-900">
         <div className="text-center mb-16">
           <h1 className="font-display font-black text-5xl md:text-7xl tracking-tighter mb-6 uppercase">
-            OUR <span className="text-[#00d2ff]">SCIENCE</span>
+            OUR <span className="text-[#16a34a]">SCIENCE</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto font-medium leading-relaxed">
             At Quins Wellness Centre, we don't guess. We test. Our formulations are built on clinical research and rigorous scientific validation.
@@ -78,21 +78,21 @@ export const SciencePage: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
           </div>
           <div className="bg-white border border-gray-200 rounded-3xl p-8 md:p-12 shadow-xl">
-            <h2 className="font-display font-bold text-3xl mb-6 text-[#00d2ff]">Evidence-Based Formulation</h2>
+            <h2 className="font-display font-bold text-3xl mb-6 text-[#16a34a]">Evidence-Based Formulation</h2>
             <p className="text-gray-600 leading-relaxed mb-6">
               Every ingredient we select is backed by peer-reviewed clinical trials. We use the exact dosages proven to be effective in human studies, never hiding behind "proprietary blends."
             </p>
             <ul className="space-y-4 text-gray-600 font-medium">
               <li className="flex items-start gap-3">
-                <ShieldCheck className="w-6 h-6 text-[#ccff00] shrink-0" />
+                <ShieldCheck className="w-6 h-6 text-[#15803d] shrink-0" />
                 <span>Third-party tested for heavy metals, microbes, and allergens.</span>
               </li>
               <li className="flex items-start gap-3">
-                <ShieldCheck className="w-6 h-6 text-[#ccff00] shrink-0" />
+                <ShieldCheck className="w-6 h-6 text-[#15803d] shrink-0" />
                 <span>Bioavailable forms of vitamins (e.g., Methylcobalamin instead of Cyanocobalamin).</span>
               </li>
               <li className="flex items-start gap-3">
-                <ShieldCheck className="w-6 h-6 text-[#ccff00] shrink-0" />
+                <ShieldCheck className="w-6 h-6 text-[#15803d] shrink-0" />
                 <span>Manufactured in cGMP certified facilities.</span>
               </li>
             </ul>
@@ -107,7 +107,7 @@ export const PrivacyPage: React.FC = () => {
       <div className="relative z-20 py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-gray-900">
         <div className="mb-12 text-left">
           <h1 className="font-display font-black text-4xl md:text-5xl tracking-tighter mb-6 uppercase">
-            PRIVACY <span className="text-[#ff5e00]">POLICY</span>
+            PRIVACY <span className="text-[#14532d]">POLICY</span>
           </h1>
           <p className="text-gray-500">Last updated: April 2026</p>
         </div>

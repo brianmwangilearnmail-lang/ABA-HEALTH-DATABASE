@@ -47,9 +47,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
             {/* Header */}
             <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-white shadow-sm">
               <div className="flex items-center gap-3">
-                <ShoppingBag className="w-6 h-6 text-[#ccff00]" />
+                <ShoppingBag className="w-6 h-6 text-[#15803d]" />
                 <h2 className="font-display font-black text-2xl text-gray-900 uppercase tracking-tighter">Your Bag</h2>
-                <span className="bg-[#ccff00] text-black text-[10px] font-black px-2 py-0.5 rounded-full">{totalItems} ITEMS</span>
+                <span className="bg-[#15803d] text-white text-[10px] font-black px-2 py-0.5 rounded-full">{totalItems} ITEMS</span>
               </div>
               <button onClick={onClose} className="p-2 rounded-full hover:bg-gray-100 text-gray-500 transition-colors">
                 <X className="w-6 h-6" />
@@ -67,7 +67,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
                   </div>
                   <button 
                     onClick={onClose}
-                    className="mt-4 px-8 py-3 bg-[#ccff00] text-black font-black rounded-full hover:scale-105 transition-transform"
+                    className="mt-4 px-8 py-3 bg-[#15803d] text-white font-black rounded-full hover:scale-105 transition-transform"
                   >
                     CONTINUE SHOPPING
                   </button>
@@ -92,7 +92,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
                           <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
-                      <p className="text-[#ccff00] font-black mt-1 text-sm">Ksh {item.price.toLocaleString()}</p>
+                      <p className="text-[#15803d] font-black mt-1 text-sm">Ksh {item.price.toLocaleString()}</p>
                       
                       <div className="flex items-center justify-between mt-auto pt-2">
                         <div className="flex items-center gap-3 bg-white rounded-full px-2 py-1 border border-gray-200 shadow-sm">
@@ -128,23 +128,23 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
                   </div>
                   <div className="flex justify-between text-gray-500 text-sm font-medium">
                     <span>Shipping</span>
-                    <span className="text-[#ff5e00] font-black">FREE</span>
+                    <span className="text-[#14532d] font-black">FREE</span>
                   </div>
                   <div className="flex justify-between text-gray-900 text-xl font-black pt-2 border-t border-gray-100">
                     <span>Total</span>
-                    <span className="text-[#ff5e00]">Ksh {totalPrice.toLocaleString()}</span>
+                    <span className="text-[#14532d]">Ksh {totalPrice.toLocaleString()}</span>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2 text-[10px] uppercase font-black tracking-widest text-gray-400 justify-center py-2 bg-gray-50 rounded-lg border border-gray-100">
-                  <ShieldCheck className="w-3 h-3 text-[#ccff00]" />
+                  <ShieldCheck className="w-3 h-3 text-[#15803d]" />
                   Secure Checkout Guaranteed
                 </div>
 
                 <button 
                   onClick={handleCheckout}
                   disabled={isCheckingOut}
-                  className="w-full bg-[#ff5e00] hover:bg-[#e05300] disabled:bg-gray-500 text-white py-4 rounded-2xl font-black text-lg tracking-widest transition-all hover:shadow-[0_10px_30px_rgba(255,94,0,0.5)] flex items-center justify-center gap-3 active:scale-95 group"
+                  className="w-full bg-[#14532d] hover:bg-[#114022] disabled:bg-gray-500 text-white py-4 rounded-2xl font-black text-lg tracking-widest transition-all hover:shadow-[0_10px_30px_rgba(20,83,45,0.5)] flex items-center justify-center gap-3 active:scale-95 group"
                 >
                   {isCheckingOut ? (
                     <motion.div 

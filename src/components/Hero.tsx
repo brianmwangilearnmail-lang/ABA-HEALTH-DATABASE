@@ -24,7 +24,7 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 50, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display font-black text-[18vw] md:text-[15vw] leading-[0.8] text-[#ccff00] text-center tracking-tighter drop-shadow-xl whitespace-nowrap"
+          className="font-display font-black text-[18vw] md:text-[15vw] leading-[0.8] text-[#15803d] text-center tracking-tighter drop-shadow-xl whitespace-nowrap"
         >
           {hero.titleTop}
         </motion.h1>
@@ -75,8 +75,8 @@ export const Hero: React.FC = () => {
               className="h-full object-contain drop-shadow-[0_40px_40px_rgba(0,0,0,0.4)]"
             />
           ) : (
-            <div className="h-[40vh] md:h-[50vh] aspect-[3/4] bg-gray-100 backdrop-blur-md border-2 border-dashed border-gray-300 rounded-3xl flex flex-col items-center justify-center p-8 text-gray-500 text-center hover:bg-gray-200 transition-all shadow-xl group-hover:scale-105 group-hover:border-[#ccff00]">
-              <Upload className="w-16 h-16 mb-4 text-[#ccff00] group-hover:scale-110 transition-transform" />
+            <div className="h-[40vh] md:h-[50vh] aspect-[3/4] bg-gray-100 backdrop-blur-md border-2 border-dashed border-gray-300 rounded-3xl flex flex-col items-center justify-center p-8 text-gray-500 text-center hover:bg-gray-200 transition-all shadow-xl group-hover:scale-105 group-hover:border-[#15803d]">
+              <Upload className="w-16 h-16 mb-4 text-[#15803d] group-hover:scale-110 transition-transform" />
               <p className="font-black text-2xl mb-2 tracking-tight">CLICK TO UPLOAD</p>
               <p className="text-sm font-medium opacity-90">Upload your Salmon Oil image here!</p>
             </div>
@@ -93,7 +93,7 @@ export const Hero: React.FC = () => {
       >
         <button 
           onClick={() => document.getElementById('shop-section')?.scrollIntoView({ behavior: 'smooth' })}
-          className="bg-[#ff5e00] hover:bg-[#e05300] text-white px-12 py-5 rounded-full font-black text-xl tracking-widest transition-all hover:scale-105 shadow-[0_0_40px_rgba(255,94,0,0.6)] border-2 border-[#ff5e00] hover:border-white flex items-center space-x-3 active:scale-95"
+          className="bg-[#14532d] hover:bg-[#114022] text-white px-12 py-5 rounded-full font-black text-xl tracking-widest transition-all hover:scale-105 shadow-[0_0_40px_rgba(255,94,0,0.6)] border-2 border-[#14532d] hover:border-white flex items-center space-x-3 active:scale-95"
         >
           <span>VIEW SUPPLEMENTS</span>
           <ArrowRight className="w-6 h-6" />

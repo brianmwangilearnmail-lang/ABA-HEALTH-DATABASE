@@ -18,7 +18,7 @@ export const HomePage: React.FC = () => {
         <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16 text-center">
           <div className="mb-16">
             <h2 className="font-display font-black text-5xl md:text-6xl text-gray-900 tracking-tighter mb-4">
-              SHOP <span className="text-[#ccff00]">PREMIUM</span>
+              SHOP <span className="text-[#15803d]">PREMIUM</span>
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto font-medium">
               Elevate your daily routine with our scientifically formulated, sustainably sourced supplements.
@@ -41,19 +41,19 @@ export const HomePage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-display font-black text-4xl md:text-5xl text-gray-900 tracking-tighter mb-4">
-              WHY CHOOSE <span className="text-[#ff5e00]">QUINS WELLNESS</span>
+              WHY CHOOSE <span className="text-[#14532d]">QUINS WELLNESS</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
             <div className="flex flex-col items-center">
-              <div className="w-20 h-20 bg-[#ccff00]/20 rounded-full flex items-center justify-center mb-6 text-[#88aa00]">
+              <div className="w-20 h-20 bg-[#15803d]/20 rounded-full flex items-center justify-center mb-6 text-[#88aa00]">
                 <Leaf className="w-10 h-10" />
               </div>
               <h3 className="font-black text-xl mb-3 text-gray-900">Sustainably Sourced</h3>
               <p className="text-gray-600 font-medium">We prioritize the environment by sourcing our ingredients from sustainable, eco-friendly suppliers globally.</p>
             </div>
             <div className="flex flex-col items-center">
-              <div className="w-20 h-20 bg-[#ff5e00]/10 rounded-full flex items-center justify-center mb-6 text-[#ff5e00]">
+              <div className="w-20 h-20 bg-[#14532d]/10 rounded-full flex items-center justify-center mb-6 text-[#14532d]">
                 <ShieldCheck className="w-10 h-10" />
               </div>
               <h3 className="font-black text-xl mb-3 text-gray-900">Clinically Tested</h3>
@@ -76,7 +76,7 @@ export const HomePage: React.FC = () => {
           <div className="md:w-1/2">
             <div className="aspect-square bg-gray-200 rounded-3xl overflow-hidden relative shadow-2xl">
               <img src="https://images.unsplash.com/photo-1576602976047-174e57a47881?auto=format&fit=crop" alt="Laboratory" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#ff5e00]/40 to-transparent mix-blend-multiply"></div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#14532d]/40 to-transparent mix-blend-multiply"></div>
             </div>
           </div>
           <div className="md:w-1/2 text-left">

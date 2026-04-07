@@ -116,7 +116,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 bg-white border border-gray-200 p-6 rounded-3xl shadow-xl">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-[#ccff00] rounded-xl flex items-center justify-center text-black">
+            <div className="w-12 h-12 bg-[#15803d] rounded-xl flex items-center justify-center text-white">
               <LayoutDashboard className="w-6 h-6" />
             </div>
             <div>
@@ -137,13 +137,13 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
           <div className="lg:col-span-1 space-y-4">
             <button 
               onClick={() => setActiveTab('hero')}
-              className={`w-full p-4 rounded-2xl border transition-all flex items-center gap-4 font-black tracking-widest text-sm uppercase ${activeTab === 'hero' ? 'bg-[#ccff00] text-black border-[#ccff00]' : 'bg-white text-gray-500 border-gray-100 hover:bg-gray-50'}`}
+              className={`w-full p-4 rounded-2xl border transition-all flex items-center gap-4 font-black tracking-widest text-sm uppercase ${activeTab === 'hero' ? 'bg-[#15803d] text-white border-[#15803d]' : 'bg-white text-gray-500 border-gray-100 hover:bg-gray-50'}`}
             >
               <Layout className="w-5 h-5" /> Hero Section
             </button>
             <button 
               onClick={() => setActiveTab('products')}
-              className={`w-full p-4 rounded-2xl border transition-all flex items-center gap-4 font-black tracking-widest text-sm uppercase ${activeTab === 'products' ? 'bg-[#ccff00] text-black border-[#ccff00]' : 'bg-white text-gray-500 border-gray-100 hover:bg-gray-50'}`}
+              className={`w-full p-4 rounded-2xl border transition-all flex items-center gap-4 font-black tracking-widest text-sm uppercase ${activeTab === 'products' ? 'bg-[#15803d] text-white border-[#15803d]' : 'bg-white text-gray-500 border-gray-100 hover:bg-gray-50'}`}
             >
               <Package className="w-5 h-5" /> Product Catalog
             </button>
@@ -161,7 +161,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
                   className="bg-white border border-gray-200 rounded-3xl p-8 shadow-2xl"
                 >
                     <div className="flex items-center gap-4 mb-8">
-                        <Layout className="w-6 h-6 text-[#ccff00]" />
+                        <Layout className="w-6 h-6 text-[#15803d]" />
                         <h2 className="font-display font-black text-2xl text-gray-900 uppercase tracking-tighter">Hero Section Settings</h2>
                     </div>
 
@@ -173,7 +173,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
                                     type="text" 
                                     value={heroForm.titleTop}
                                     onChange={(e) => setHeroForm({...heroForm, titleTop: e.target.value})}
-                                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors" 
+                                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#14532d] transition-colors" 
                                 />
                             </div>
                             <div className="space-y-2">
@@ -182,7 +182,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
                                     type="text" 
                                     value={heroForm.titleBottom}
                                     onChange={(e) => setHeroForm({...heroForm, titleBottom: e.target.value})}
-                                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors" 
+                                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#14532d] transition-colors" 
                                 />
                             </div>
                         </div>
@@ -192,13 +192,13 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
                                 rows={3}
                                 value={heroForm.subtitle}
                                 onChange={(e) => setHeroForm({...heroForm, subtitle: e.target.value})}
-                                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors resize-none text-sm" 
+                                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#14532d] transition-colors resize-none text-sm" 
                             />
                         </div>
 
                         <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
                             <div className="flex items-center gap-4 mb-4">
-                                <ImageIcon className="w-5 h-5 text-[#ff5e00]" />
+                                <ImageIcon className="w-5 h-5 text-[#14532d]" />
                                 <h3 className="font-bold text-gray-900 uppercase tracking-wider text-sm">Visual Preview</h3>
                             </div>
                             <div className="flex items-center gap-8">
@@ -212,7 +212,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
                                         className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer"
                                         onClick={() => heroFileInputRef.current?.click()}
                                      >
-                                         <Upload className="w-8 h-8 text-[#ccff00]" />
+                                         <Upload className="w-8 h-8 text-[#15803d]" />
                                      </div>
                                 </div>
                                 <div className="space-y-4 flex-grow text-left">
@@ -225,7 +225,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
                                         onChange={(e) => handleImageUpload(e, (base64) => setHeroForm({...heroForm, mainImage: base64}))}
                                     />
                                     <button 
-                                      className="px-6 py-2 bg-[#ccff00]/10 hover:bg-[#ccff00]/20 text-[#ccff00] rounded-lg text-sm font-black tracking-widest transition-all border border-[#ccff00]/20"
+                                      className="px-6 py-2 bg-[#15803d]/10 hover:bg-[#15803d]/20 text-[#15803d] rounded-lg text-sm font-black tracking-widest transition-all border border-[#15803d]/20"
                                       onClick={() => heroFileInputRef.current?.click()}
                                     >
                                         UPLOAD NEW IMAGE
@@ -236,7 +236,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
 
                         <button 
                           onClick={handleHeroSave}
-                          className="w-full bg-[#ccff00] hover:bg-[#b3e600] text-black py-4 rounded-xl font-black text-lg tracking-widest transition-all hover:shadow-[0_10px_30px_rgba(204,255,0,0.4)] flex items-center justify-center gap-3 active:scale-95 shadow-xl"
+                          className="w-full bg-[#15803d] hover:bg-[#114022] text-white py-4 rounded-xl font-black text-lg tracking-widest transition-all hover:shadow-[0_10px_30px_rgba(21,128,61,0.4)] flex items-center justify-center gap-3 active:scale-95 shadow-xl"
                         >
                             <Save className="w-6 h-6" /> SAVE HERO CHANGES
                         </button>
@@ -253,12 +253,12 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
                     <div className="bg-white border border-gray-200 rounded-3xl p-8 shadow-2xl">
                         <div className="flex justify-between items-center mb-8">
                             <div className="flex items-center gap-4">
-                                <Package className="w-6 h-6 text-[#ccff00]" />
+                                <Package className="w-6 h-6 text-[#15803d]" />
                                 <h2 className="font-display font-black text-2xl text-gray-900 uppercase tracking-tighter">Product Management</h2>
                             </div>
                             <button 
                               onClick={openAddModal}
-                              className="px-6 py-2 bg-[#ff5e00] hover:bg-[#e05300] text-white rounded-xl font-black text-xs tracking-widest flex items-center gap-2 transition-all hover:scale-105 active:scale-95 shadow-lg"
+                              className="px-6 py-2 bg-[#14532d] hover:bg-[#114022] text-white rounded-xl font-black text-xs tracking-widest flex items-center gap-2 transition-all hover:scale-105 active:scale-95 shadow-lg"
                             >
                                 <Plus className="w-4 h-4" /> ADD NEW
                             </button>
@@ -268,10 +268,10 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
                             <table className="w-full text-left border-collapse">
                                 <thead>
                                     <tr className="border-b border-gray-100">
-                                        <th className="py-4 px-4 text-[10px] font-black uppercase tracking-widest text-[#ff5e00]">Product Info</th>
-                                        <th className="py-4 px-4 text-[10px] font-black uppercase tracking-widest text-[#ff5e00]">Price</th>
-                                        <th className="py-4 px-4 text-[10px] font-black uppercase tracking-widest text-[#ff5e00]">Status</th>
-                                        <th className="py-4 px-4 text-[10px] font-black uppercase tracking-widest text-[#ff5e00] text-right">Actions</th>
+                                        <th className="py-4 px-4 text-[10px] font-black uppercase tracking-widest text-[#14532d]">Product Info</th>
+                                        <th className="py-4 px-4 text-[10px] font-black uppercase tracking-widest text-[#14532d]">Price</th>
+                                        <th className="py-4 px-4 text-[10px] font-black uppercase tracking-widest text-[#14532d]">Status</th>
+                                        <th className="py-4 px-4 text-[10px] font-black uppercase tracking-widest text-[#14532d] text-right">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -298,7 +298,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
                                             <td className="py-4 px-4">
                                                 <button 
                                                     onClick={() => handleToggleProductStatus(product.id, product.inStock)}
-                                                    className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter transition-all ${product.inStock ? 'bg-[#ccff00] text-black' : 'bg-red-500/20 text-red-400 border border-red-500/50'}`}
+                                                    className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter transition-all ${product.inStock ? 'bg-[#15803d] text-white' : 'bg-red-500/20 text-red-400 border border-red-500/50'}`}
                                                 >
                                                     {product.inStock ? 'In Stock' : 'Out of Stock'}
                                                 </button>
@@ -307,7 +307,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
                                                 <div className="flex items-center justify-end gap-2 opacity-40 group-hover:opacity-100 transition-opacity">
                                                     <button 
                                                       onClick={() => openEditModal(product)}
-                                                      className="p-2 hover:bg-[#ccff00] hover:text-black rounded-lg text-white transition-all"
+                                                      className="p-2 hover:bg-[#15803d] hover:text-black rounded-lg text-white transition-all"
                                                     >
                                                       <Edit2 className="w-4 h-4 text-gray-400 group-hover:text-gray-900" />
                                                     </button>
@@ -351,7 +351,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
             >
               <div className="flex justify-between items-center mb-8">
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-[#ccff00] rounded-xl flex items-center justify-center text-black">
+                  <div className="w-10 h-10 bg-[#15803d] rounded-xl flex items-center justify-center text-black">
                     {modalMode === 'add' ? <Plus className="w-6 h-6" /> : <Edit2 className="w-6 h-6" />}
                   </div>
                   <h2 className="font-display font-black text-2xl text-gray-900 uppercase tracking-tighter">
@@ -367,22 +367,22 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
                 <div className="flex flex-col md:flex-row gap-8 mb-4">
                     {/* Image Upload Area */}
                     <div className="w-full md:w-1/3 flex flex-col gap-4">
-                        <label className="text-[10px] font-black uppercase tracking-widest text-[#ff5e00] ml-1">Product Photo</label>
+                        <label className="text-[10px] font-black uppercase tracking-widest text-[#14532d] ml-1">Product Photo</label>
                         <div 
-                            className="aspect-square bg-gray-50 border-2 border-dashed border-gray-200 rounded-3xl flex flex-col items-center justify-center gap-4 group cursor-pointer hover:border-[#ff5e00]/50 transition-colors overflow-hidden relative"
+                            className="aspect-square bg-gray-50 border-2 border-dashed border-gray-200 rounded-3xl flex flex-col items-center justify-center gap-4 group cursor-pointer hover:border-[#14532d]/50 transition-colors overflow-hidden relative"
                             onClick={() => productFileInputRef.current?.click()}
                         >
                             {editingProduct?.image ? (
                                 <>
                                     <img src={editingProduct.image} className="w-full h-full object-contain p-4" alt="Preview" />
                                     <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                        <CloudUpload className="w-10 h-10 text-[#ff5e00]" />
+                                        <CloudUpload className="w-10 h-10 text-[#14532d]" />
                                     </div>
                                 </>
                             ) : (
                                 <>
                                     <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                                        <CloudUpload className="w-6 h-6 text-gray-400 group-hover:text-[#ff5e00]" />
+                                        <CloudUpload className="w-6 h-6 text-gray-400 group-hover:text-[#14532d]" />
                                     </div>
                                     <div className="text-center px-4">
                                         <p className="text-gray-900 font-bold text-xs">Click to upload</p>
@@ -402,48 +402,48 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
 
                     <div className="flex-1 space-y-6">
                         <div className="space-y-2 text-left">
-                            <label className="text-[10px] font-black uppercase tracking-widest text-[#ff5e00] ml-1">Product Title</label>
+                            <label className="text-[10px] font-black uppercase tracking-widest text-[#14532d] ml-1">Product Title</label>
                             <input 
                                 type="text" 
                                 required
                                 value={editingProduct?.title || ''}
                                 onChange={(e) => setEditingProduct({...editingProduct!, title: e.target.value})}
-                                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors font-medium" 
+                                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#14532d] transition-colors font-medium" 
                                 placeholder="e.g. Omega-3 Fish Oil"
                             />
                         </div>
                         <div className="grid grid-cols-2 gap-4 text-left">
                             <div className="space-y-2">
-                                <label className="text-[10px] font-black uppercase tracking-widest text-[#ff5e00] ml-1">Brand Name</label>
+                                <label className="text-[10px] font-black uppercase tracking-widest text-[#14532d] ml-1">Brand Name</label>
                                 <input 
                                     type="text" 
                                     required
                                     value={editingProduct?.brand || ''}
                                     onChange={(e) => setEditingProduct({...editingProduct!, brand: e.target.value})}
-                                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors text-sm" 
+                                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#14532d] transition-colors text-sm" 
                                     placeholder="e.g. Natural Factors"
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-[10px] font-black uppercase tracking-widest text-[#ff5e00] ml-1">Price (KSh)</label>
+                                <label className="text-[10px] font-black uppercase tracking-widest text-[#14532d] ml-1">Price (KSh)</label>
                                 <input 
                                     type="number" 
                                     required
                                     value={editingProduct?.price || ''}
                                     onChange={(e) => setEditingProduct({...editingProduct!, price: Number(e.target.value)})}
-                                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors text-sm" 
+                                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#14532d] transition-colors text-sm" 
                                     placeholder="0"
                                 />
                             </div>
                         </div>
                         <div className="space-y-2 text-left">
-                            <label className="text-[10px] font-black uppercase tracking-widest text-[#ff5e00] ml-1">Composition / Description</label>
+                            <label className="text-[10px] font-black uppercase tracking-widest text-[#14532d] ml-1">Composition / Description</label>
                             <textarea 
                                 rows={3}
                                 required
                                 value={editingProduct?.composition || ''}
                                 onChange={(e) => setEditingProduct({...editingProduct!, composition: e.target.value})}
-                                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors resize-none text-sm" 
+                                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#14532d] transition-colors resize-none text-sm" 
                                 placeholder="e.g. Contains high potency EPA/DHA..."
                             />
                         </div>
@@ -452,17 +452,17 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
 
                 <div className="grid md:grid-cols-2 gap-6 items-end">
                     <div className="space-y-2 text-left">
-                        <label className="text-[10px] font-black uppercase tracking-widest text-[#ff5e00] ml-1">Manual Image URL (Optional)</label>
+                        <label className="text-[10px] font-black uppercase tracking-widest text-[#14532d] ml-1">Manual Image URL (Optional)</label>
                         <input 
                             type="text" 
                             value={editingProduct?.image || ''}
                             onChange={(e) => setEditingProduct({...editingProduct!, image: e.target.value})}
-                            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors text-xs" 
+                            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#14532d] transition-colors text-xs" 
                             placeholder="/images/product.png"
                         />
                     </div>
                     <div className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-200 cursor-pointer h-[50px] mb-[2px]" onClick={() => setEditingProduct({...editingProduct!, inStock: !editingProduct?.inStock})}>
-                        <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all ${editingProduct?.inStock ? 'bg-[#ff5e00] border-[#ff5e00]' : 'border-gray-200'}`}>
+                        <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all ${editingProduct?.inStock ? 'bg-[#14532d] border-[#14532d]' : 'border-gray-200'}`}>
                             {editingProduct?.inStock && <Check className="w-4 h-4 text-white" />}
                         </div>
                         <span className="text-gray-900 font-bold text-[10px] tracking-wider uppercase">In Stock</span>
@@ -479,7 +479,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onLogout
                   </button>
                   <button 
                     type="submit"
-                    className="flex-[2] bg-[#ccff00] hover:bg-[#b3e600] text-black py-4 rounded-xl font-black text-lg tracking-widest transition-all hover:shadow-[0_10px_30px_rgba(204,255,0,0.4)] flex items-center justify-center gap-3 active:scale-95 shadow-xl"
+                    className="flex-[2] bg-[#15803d] hover:bg-[#114022] text-white py-4 rounded-xl font-black text-lg tracking-widest transition-all hover:shadow-[0_10px_30px_rgba(21,128,61,0.4)] flex items-center justify-center gap-3 active:scale-95 shadow-xl"
                   >
                     <Save className="w-6 h-6" /> {modalMode === 'add' ? 'ADD TO SHOP' : 'SAVE CHANGES'}
                   </button>

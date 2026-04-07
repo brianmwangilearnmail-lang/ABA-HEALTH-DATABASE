@@ -37,11 +37,11 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onLogin, onBack 
         className="w-full max-w-md bg-white border border-gray-200 rounded-[2rem] p-8 md:p-12 shadow-2xl relative overflow-hidden"
       >
         {/* Decorative elements */}
-        <div className="absolute -top-24 -right-24 w-48 h-48 bg-[#ccff00]/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-[#ff5e00]/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute -top-24 -right-24 w-48 h-48 bg-[#15803d]/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-[#14532d]/20 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-[#ff5e00] rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-[0_0_20px_rgba(255,94,0,0.4)]">
+          <div className="w-16 h-16 bg-[#14532d] rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-[0_0_20px_rgba(20,83,45,0.4)]">
             <ShieldAlert className="w-8 h-8 text-white" />
           </div>
           <h1 className="font-display font-black text-3xl text-gray-900 uppercase tracking-tighter">Admin Portal</h1>
@@ -50,14 +50,14 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onLogin, onBack 
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
-            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#ff5e00] ml-1">Username</label>
+            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#14532d] ml-1">Username</label>
             <div className="relative">
               <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input 
                 type="text" 
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-12 py-4 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors font-medium placeholder:text-gray-400" 
+                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-12 py-4 text-gray-900 focus:outline-none focus:border-[#14532d] transition-colors font-medium placeholder:text-gray-400" 
                 placeholder="Enter username"
                 required
               />
@@ -65,14 +65,14 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onLogin, onBack 
           </div>
 
           <div className="space-y-2">
-            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#ff5e00] ml-1">Password</label>
+            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#14532d] ml-1">Password</label>
             <div className="relative">
               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input 
                 type="password" 
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-12 py-4 text-gray-900 focus:outline-none focus:border-[#ff5e00] transition-colors font-medium placeholder:text-gray-400" 
+                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-12 py-4 text-gray-900 focus:outline-none focus:border-[#14532d] transition-colors font-medium placeholder:text-gray-400" 
                 placeholder="Enter password"
                 required
               />
@@ -92,13 +92,13 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onLogin, onBack 
           <button 
             type="submit" 
             disabled={isLoggingIn}
-            className="w-full bg-[#ccff00] hover:bg-[#b3e600] disabled:bg-gray-500 text-black py-4 rounded-xl font-black text-lg tracking-widest transition-all hover:shadow-[0_0_30px_rgba(204,255,0,0.5)] mt-4 active:scale-95 flex items-center justify-center gap-3 group"
+            className="w-full bg-[#15803d] hover:bg-[#114022] disabled:bg-gray-500 text-white py-4 rounded-xl font-black text-lg tracking-widest transition-all hover:shadow-[0_0_30px_rgba(21,128,61,0.5)] mt-4 active:scale-95 flex items-center justify-center gap-3 group"
           >
             {isLoggingIn ? (
                 <motion.div 
                     animate={{ rotate: 360 }} 
                     transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
-                    className="w-6 h-6 border-2 border-black/30 border-t-black rounded-full"
+                    className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full"
                 />
             ) : (
                 <>
