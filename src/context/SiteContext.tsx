@@ -86,17 +86,59 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
         fetchData();
         
         // Listen for real-time changes
-        const channels = [
-            supabase.channel('public:products').on('postgres_changes', { event: '*', schema: 'public', table: 'products' }, fetchProducts),
-            supabase.channel('public:orders').on('postgres_changes', { event: '*', schema: 'public', table: 'orders' }, fetchOrders),
-            supabase.channel('public:inventory').on('postgres_changes', { event: '*', schema: 'public', table: 'inventory_batches' }, fetchInventoryBatches),
-            supabase.channel('public:hero').on('postgres_changes', { event: '*', schema: 'public', table: 'hero_content' }, fetchHero)
-        ];
+        // We handle events specifically to maximize UI responsiveness
+        const productChannel = supabase.channel('products_sync')
+            .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'products' }, (payload) => {
+                const p = payload.new as any;
+                const newProduct: Product = {
+                    id: p.id,
+                    title: p.title,
+                    composition: p.composition,
+                    brand: p.brand,
+                    price: parseFloat(p.price),
+                    image: p.image,
+                    inStock: p.in_stock
+                };
+                setProducts(prev => {
+                    if (prev.find(item => item.id === newProduct.id)) return prev;
+                    return [...prev, newProduct];
+                });
+            })
+            .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'products' }, (payload) => {
+                const p = payload.new as any;
+                const updatedProduct: Product = {
+                    id: p.id,
+                    title: p.title,
+                    composition: p.composition,
+                    brand: p.brand,
+                    price: parseFloat(p.price),
+                    image: p.image,
+                    inStock: p.in_stock
+                };
+                setProducts(prev => prev.map(item => item.id === updatedProduct.id ? updatedProduct : item));
+            })
+            .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'products' }, (payload) => {
+                setProducts(prev => prev.filter(item => item.id !== payload.old.id));
+            })
+            .subscribe();
 
-        channels.forEach(ch => ch.subscribe());
+        const ordersChannel = supabase.channel('orders_sync')
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'orders' }, fetchOrders)
+            .subscribe();
+
+        const inventoryChannel = supabase.channel('inventory_sync')
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'inventory_batches' }, fetchInventoryBatches)
+            .subscribe();
+
+        const heroChannel = supabase.channel('hero_sync')
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'hero_content' }, fetchHero)
+            .subscribe();
 
         return () => {
-            channels.forEach(ch => supabase.removeChannel(ch));
+            supabase.removeChannel(productChannel);
+            supabase.removeChannel(ordersChannel);
+            supabase.removeChannel(inventoryChannel);
+            supabase.removeChannel(heroChannel);
         };
     }, []);
 
@@ -205,19 +247,33 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
         if (updates.image !== undefined) dbUpdates.image = updates.image;
         if (updates.inStock !== undefined) dbUpdates.in_stock = updates.inStock;
 
-        const { error } = await supabase
+        const { data, error } = await supabase
             .from('products')
             .update(dbUpdates)
-            .eq('id', id);
+            .eq('id', id)
+            .select();
 
         if (error) {
             console.error('Error updating product:', error);
-            setProducts(prev => prev.map(p => p.id === id ? { ...p, ...updates } : p));
+            // Revert state if error (ideal but for now we just log)
+        } else if (data && data[0]) {
+            // Immediate UI update
+            const p = data[0];
+            const updated: Product = {
+                id: p.id,
+                title: p.title,
+                composition: p.composition,
+                brand: p.brand,
+                price: parseFloat(p.price),
+                image: p.image,
+                inStock: p.in_stock
+            };
+            setProducts(prev => prev.map(item => item.id === id ? updated : item));
         }
     };
 
     const addProduct = async (p: Omit<Product, 'id'>) => {
-        const { error } = await supabase
+        const { data, error } = await supabase
             .from('products')
             .insert([{
                 title: p.title,
@@ -226,12 +282,24 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 price: p.price,
                 image: p.image,
                 in_stock: p.inStock
-            }]);
+            }])
+            .select();
 
         if (error) {
             console.error('Error adding product:', error);
-            const newId = Date.now();
-            setProducts(prev => [...prev, { ...p, id: newId }]);
+        } else if (data && data[0]) {
+            // Immediate UI update for "live" feel
+            const np = data[0];
+            const newProduct: Product = {
+                id: np.id,
+                title: np.title,
+                composition: np.composition,
+                brand: np.brand,
+                price: parseFloat(np.price),
+                image: np.image,
+                inStock: np.in_stock
+            };
+            setProducts(prev => [...prev, newProduct]);
         }
     };
 
@@ -243,6 +311,8 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
         if (error) {
             console.error('Error deleting product:', error);
+        } else {
+            // Immediate UI update
             setProducts(prev => prev.filter(p => p.id !== id));
         }
     };
@@ -261,6 +331,8 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
         if (error) {
             console.error('Error updating hero:', error);
+        } else {
+            // Update local state immediately for responsiveness
             setHero(prev => ({ ...prev, ...updates }));
         }
     };
