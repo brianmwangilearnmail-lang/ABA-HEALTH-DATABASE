@@ -81,14 +81,15 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const [inventoryBatches, setInventoryBatches] = useState<InventoryBatch[]>([]);
     const [loading, setLoading] = useState(true);
 
-    // Initial Fetch
-    useEffect(() => {
+        // Initial Fetch
         fetchData();
         
         // Listen for real-time changes
-        // We handle events specifically to maximize UI responsiveness
+        console.log('Initializing Real-time Subscriptions...');
+
         const productChannel = supabase.channel('products_sync')
             .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'products' }, (payload) => {
+                console.log('Real-time: Product Inserted', payload.new);
                 const p = payload.new as any;
                 const newProduct: Product = {
                     id: p.id,
@@ -101,10 +102,13 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 };
                 setProducts(prev => {
                     if (prev.find(item => item.id === newProduct.id)) return prev;
-                    return [...prev, newProduct];
+                    const updated = [...prev, newProduct];
+                    localStorage.setItem('aba_products', JSON.stringify(updated));
+                    return updated;
                 });
             })
             .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'products' }, (payload) => {
+                console.log('Real-time: Product Updated', payload.new);
                 const p = payload.new as any;
                 const updatedProduct: Product = {
                     id: p.id,
@@ -115,24 +119,42 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
                     image: p.image,
                     inStock: p.in_stock
                 };
-                setProducts(prev => prev.map(item => item.id === updatedProduct.id ? updatedProduct : item));
+                setProducts(prev => {
+                    const updated = prev.map(item => item.id === updatedProduct.id ? updatedProduct : item);
+                    localStorage.setItem('aba_products', JSON.stringify(updated));
+                    return updated;
+                });
             })
             .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'products' }, (payload) => {
-                setProducts(prev => prev.filter(item => item.id !== payload.old.id));
+                console.log('Real-time: Product Deleted', payload.old);
+                setProducts(prev => {
+                    const updated = prev.filter(item => item.id !== payload.old.id);
+                    localStorage.setItem('aba_products', JSON.stringify(updated));
+                    return updated;
+                });
             })
-            .subscribe();
+            .subscribe((status) => console.log('Product sync status:', status));
 
         const ordersChannel = supabase.channel('orders_sync')
-            .on('postgres_changes', { event: '*', schema: 'public', table: 'orders' }, fetchOrders)
-            .subscribe();
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'orders' }, () => {
+                console.log('Real-time: Orders change detected');
+                fetchOrders();
+            })
+            .subscribe((status) => console.log('Orders sync status:', status));
 
         const inventoryChannel = supabase.channel('inventory_sync')
-            .on('postgres_changes', { event: '*', schema: 'public', table: 'inventory_batches' }, fetchInventoryBatches)
-            .subscribe();
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'inventory_batches' }, () => {
+                console.log('Real-time: Inventory change detected');
+                fetchInventoryBatches();
+            })
+            .subscribe((status) => console.log('Inventory sync status:', status));
 
         const heroChannel = supabase.channel('hero_sync')
-            .on('postgres_changes', { event: '*', schema: 'public', table: 'hero_content' }, fetchHero)
-            .subscribe();
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'hero_content' }, () => {
+                console.log('Real-time: Hero change detected');
+                fetchHero();
+            })
+            .subscribe((status) => console.log('Hero sync status:', status));
 
         return () => {
             supabase.removeChannel(productChannel);
@@ -150,22 +172,33 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     const fetchOrders = async () => {
         const { data, error } = await supabase.from('orders').select('*').order('created_at', { ascending: false });
-        if (error) console.error('Error fetching orders:', error);
-        else if (data) setOrders(data);
+        if (error) {
+            console.error('Error fetching orders:', error);
+            const saved = localStorage.getItem('aba_orders');
+            if (saved) setOrders(JSON.parse(saved));
+        } else if (data) {
+            setOrders(data);
+            localStorage.setItem('aba_orders', JSON.stringify(data));
+        }
     };
 
     const fetchInventoryBatches = async () => {
         const { data, error } = await supabase.from('inventory_batches').select('*');
-        if (error) console.error('Error fetching inventory:', error);
-        else if (data) {
-            setInventoryBatches(data.map((b: any) => ({
+        if (error) {
+            console.error('Error fetching inventory:', error);
+            const saved = localStorage.getItem('aba_inventory');
+            if (saved) setInventoryBatches(JSON.parse(saved));
+        } else if (data) {
+            const mapped = data.map((b: any) => ({
                 id: b.id.toString(),
                 productId: b.product_id,
                 batchNumber: b.batch_number,
                 expiryDate: b.expiry_date,
                 quantity: b.remaining_quantity,
                 status: b.status
-            })));
+            }));
+            setInventoryBatches(mapped);
+            localStorage.setItem('aba_inventory', JSON.stringify(mapped));
         }
     };
 
@@ -190,6 +223,7 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 inStock: p.in_stock
             }));
             setProducts(mapped);
+            localStorage.setItem('aba_products', JSON.stringify(mapped));
         }
     };
 
@@ -205,12 +239,14 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
              const saved = localStorage.getItem('aba_hero');
              if (saved) setHero(JSON.parse(saved));
         } else if (data) {
-            setHero({
+            const heroData = {
                 titleTop: data.title_top,
                 titleBottom: data.title_bottom,
                 subtitle: data.subtitle,
                 mainImage: data.main_image
-            });
+            };
+            setHero(heroData);
+            localStorage.setItem('aba_hero', JSON.stringify(heroData));
         }
     };
 

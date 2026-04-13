@@ -89,3 +89,9 @@ VALUES
 
 -- Enable Row Level Security (RLS) - Optional but recommended
 -- For now, keep it simple for testing or add policies if needed.
+
+-- Enable Realtime for the tables
+ALTER PUBLICATION supabase_realtime ADD TABLE products;
+ALTER PUBLICATION supabase_realtime ADD TABLE hero_content;
+ALTER PUBLICATION supabase_realtime ADD TABLE orders;
+ALTER PUBLICATION supabase_realtime ADD TABLE inventory_batches;
