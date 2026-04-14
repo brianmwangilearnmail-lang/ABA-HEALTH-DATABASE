@@ -56,9 +56,10 @@ interface SiteContextType {
     products: Product[];
     hero: HeroContent;
     analytics: AnalyticsData;
-    inventoryBatches: InventoryBatch[];
     orders: Order[];
     loading: boolean;
+    selectedProduct: Product | null;
+    setSelectedProduct: (product: Product | null) => void;
     updateProduct: (id: number, updates: Partial<Product>) => Promise<void>;
     addProduct: (product: Omit<Product, 'id'>) => Promise<void>;
     deleteProduct: (id: number) => Promise<void>;
@@ -80,6 +81,7 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const [orders, setOrders] = useState<Order[]>([]);
     const [inventoryBatches, setInventoryBatches] = useState<InventoryBatch[]>([]);
     const [loading, setLoading] = useState(true);
+    const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
         // Initial Fetch
         fetchData();
@@ -381,6 +383,8 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
             inventoryBatches, 
             orders,
             loading, 
+            selectedProduct,
+            setSelectedProduct,
             updateProduct, 
             addProduct, 
             deleteProduct, 

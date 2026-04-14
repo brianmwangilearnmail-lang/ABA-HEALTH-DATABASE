@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ShoppingCart, Plus, Minus, Package, Eye, Heart } from 'lucide-react';
 import { useCart } from '../context/CartContext';
-import { Product } from '../context/SiteContext';
+import { useSite, Product } from '../context/SiteContext';
 import { motion } from 'motion/react';
 
 interface ProductCardProps {
@@ -11,6 +11,7 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product, variant = 'default' }) => {
   const { addToCart } = useCart();
+  const { setSelectedProduct } = useSite();
   const [quantity, setQuantity] = useState(1);
 
   const handleAddToCart = () => {
@@ -20,13 +21,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, variant = 'de
 
   if (variant === 'new-arrival') {
     return (
-      <div className="min-w-[260px] w-[260px] bg-white border border-gray-200 rounded-[1.25rem] p-4 flex flex-col gap-4 group hover:-translate-y-1 transition-all duration-300 hover:border-[#14532d] shadow-sm hover:shadow-xl">
+      <div 
+        onClick={() => setSelectedProduct(product)}
+        className="min-w-[260px] w-[260px] bg-white border border-gray-200 rounded-[1.25rem] p-4 flex flex-col gap-4 group hover:-translate-y-1 transition-all duration-300 hover:border-[#14532d] shadow-sm hover:shadow-xl cursor-pointer"
+      >
         <div className="w-full aspect-square bg-white/5 rounded-xl relative flex items-center justify-center p-4 overflow-hidden">
           <div className="absolute top-2 right-2 flex flex-col gap-2 z-10">
-            <button className="w-8 h-8 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-[#15803d] hover:text-white transition-colors">
+            <button 
+              onClick={(e) => { e.stopPropagation(); setSelectedProduct(product); }}
+              className="w-8 h-8 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-[#15803d] hover:text-white transition-colors"
+            >
               <Eye className="w-4 h-4" />
             </button>
-            <button className="w-8 h-8 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-[#14532d] hover:text-white hover:border-[#14532d] transition-colors">
+            <button 
+              onClick={(e) => e.stopPropagation()}
+              className="w-8 h-8 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-[#14532d] hover:text-white hover:border-[#14532d] transition-colors"
+            >
               <Heart className="w-4 h-4" />
             </button>
           </div>
@@ -44,7 +54,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, variant = 'de
           <p className="text-[#15803d] font-black text-lg mt-1">Ksh {product.price.toLocaleString()}</p>
         </div>
         <button 
-          onClick={handleAddToCart}
+          onClick={(e) => { e.stopPropagation(); handleAddToCart(); }}
           className="w-full py-3 rounded-xl bg-gray-100 hover:bg-[#14532d] text-gray-900 hover:text-white font-black text-sm tracking-widest transition-all flex items-center justify-center gap-2 border border-transparent hover:shadow-[0_0_20px_rgba(255,94,0,0.4)]"
         >
           <Plus className="w-4 h-4" /> ADD TO CART
@@ -54,7 +64,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, variant = 'de
   }
 
   return (
-    <div className="bg-white border border-gray-200 rounded-[1.25rem] p-[1.25rem] relative transition-all duration-300 flex flex-col gap-4 cursor-pointer hover:-translate-y-[5px] hover:border-[#14532d] shadow-sm hover:shadow-2xl group text-left">
+    <div 
+      onClick={() => setSelectedProduct(product)}
+      className="bg-white border border-gray-200 rounded-[1.25rem] p-[1.25rem] relative transition-all duration-300 flex flex-col gap-4 cursor-pointer hover:-translate-y-[5px] hover:border-[#14532d] shadow-sm hover:shadow-2xl group text-left"
+    >
       
       <span className="absolute top-4 right-4 px-3 py-1 rounded-full text-[0.65rem] font-black uppercase bg-[#15803d] text-white z-10">
         {product.brand}

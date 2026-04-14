@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { CartDrawer } from './components/CartDrawer';
+import { ProductModal } from './components/ProductModal';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage, SciencePage, PrivacyPage } from './pages/StaticPages';
@@ -115,6 +116,7 @@ function MainApp() {
       <Footer onPageChange={(p) => { setCurrentPage(p); window.location.hash = p; window.scrollTo({ top: 0, behavior: 'smooth' }); }} />
       )}
 
+      <ProductModal />
       <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </div>
   );
